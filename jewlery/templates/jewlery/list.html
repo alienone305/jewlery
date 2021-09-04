@@ -1,0 +1,151 @@
+{% extends "BaseTemplates/base1.html" %}
+{% load customtags %}
+
+
+{% block head_block %}
+<meta name=”robots” content=”noindex,follow”>
+<title>
+لیست طلا و جواهرات | زر مارکت
+</title>
+{% endblock %}
+
+{% block body_block %}
+<div style="margin:1%;border-radius: 8px;" class="uk-card uk-card-body darkgreyC">
+  <ul uk-accordion="multiple: true">
+      <li style="border-right:5px #d4af37 solid; padding:10px;">
+          <a style="padding:10px;" class="uk-accordion-title goldC darkgreyC-text fHarmattan" href="#">جستجو</a>
+          <div class="uk-accordion-content whiteC-text fHarmattan">
+            <form  method="get">
+            <div class="uk-grid-match uk-grid-small uk-text-center" uk-grid>
+              <div style="margin-top:30px;margin-right:20px; border-bottom:1px solid #d4af37" class="uk-width-1-1 fHarmattan goldC-text uk-text-center uk-text-bold">
+نوع طلا
+              </div>
+              <div class="uk-width-1-2 uk-width-1-4@m fHarmattan goldC-text uk-text-center  ">
+            {{filter.form.is_womanly}}
+              </div>
+              <div class="uk-width-1-2 uk-width-1-4@m fHarmattan goldC-text uk-text-center ">
+            {{filter.form.is_used}}
+              </div>
+              <div class="uk-width-1-2 uk-width-1-4@m fHarmattan goldC-text uk-text-center  ">
+            {{filter.form.is_domestic}}
+              </div>
+              <div class="uk-width-1-2 uk-width-1-4@m fHarmattan goldC-text uk-text-center ">
+            {{filter.form.is_available}}
+              </div>
+              <div style="margin-top:30px;margin-right:20px; border-bottom:1px solid #d4af37" class="uk-width-1-1 fHarmattan goldC-text uk-text-center uk-text-bold">
+دسته بندی
+              </div>
+              <div class="uk-width-1-2 uk-width-1-4@m fHarmattan goldC-text uk-text-center ">
+            {{filter.form.is_goldset}}
+              </div>
+              <div class="uk-width-1-2 uk-width-1-4@m fHarmattan goldC-text uk-text-center ">
+            {{filter.form.is_pendant}}
+              </div>
+              <div class="uk-width-1-2 uk-width-1-4@m fHarmattan goldC-text uk-text-center  ">
+            {{filter.form.is_bracelet}}
+              </div>
+              <div class="uk-width-1-2 uk-width-1-4@m fHarmattan goldC-text uk-text-center ">
+            {{filter.form.is_necklace}}
+              </div>
+              <div class="uk-width-1-2 uk-width-1-4@m fHarmattan goldC-text uk-text-center  ">
+            {{filter.form.is_bangle}}
+              </div>
+              <div class="uk-width-1-2 uk-width-1-4@m fHarmattan goldC-text uk-text-center ">
+            {{filter.form.is_chain}}
+              </div>
+              <div class="uk-width-1-2 uk-width-1-4@m fHarmattan goldC-text uk-text-center  ">
+            {{filter.form.is_earings}}
+              </div>
+              <div class="uk-width-1-2 uk-width-1-4@m fHarmattan goldC-text uk-text-center ">
+            {{filter.form.is_halfset}}
+              </div>
+              <div class="uk-width-1-2 uk-width-1-4@m fHarmattan goldC-text uk-text-center  ">
+            {{filter.form.is_watch}}
+              </div>
+              <div class="uk-width-1-2 uk-width-1-4@m fHarmattan goldC-text uk-text-center uk-text-meduium">
+            {{filter.form.is_anklet}}
+              </div>
+              <div style="margin-top:30px;margin-right:20px; border-bottom:1px solid #d4af37" class="uk-width-1-1 fHarmattan goldC-text uk-text-center uk-text-bold">
+مشخصات طلا
+              </div>
+
+              <div class="uk-width-1-2 uk-width-1-4@m fHarmattan goldC-text uk-text-center  ">
+            {{filter.form.weight__gte}}
+              </div>
+              <div class="uk-width-1-2 uk-width-1-4@m fHarmattan goldC-text uk-text-center ">
+            {{filter.form.weight__lte}}
+              </div>
+              <div class="uk-width-1-2 uk-width-1-4@m fHarmattan goldC-text uk-text-center  ">
+            {{filter.form.wholesale_wage__gte}}
+              </div>
+              <div class="uk-width-1-2 uk-width-1-4@m fHarmattan goldC-text uk-text-center ">
+            {{filter.form.wholesale_wage__lte}}
+              </div>
+              <div class="uk-width-1-2 uk-width-1-4@m fHarmattan goldC-text uk-text-cente ">
+            {{filter.form.sale_wage__gte}}
+              </div>
+              <div class="uk-width-1-2 uk-width-1-4@m fHarmattan goldC-text uk-text-center">
+            {{filter.form.sale_wage__lte}}
+              </div>
+            </div>
+
+            <button style="margin-top:20px;" class="uk-button uk-button-primary fHarmattan goldC darkgreyC-text uk-align-center" type="submit">جستجو
+          </button>
+        </form>
+          </div>
+      </li>
+    </ul>
+  </div>
+  <div style="padding:1.2%;" class="uk-grid-match uk-text-center uk-grid-small" uk-grid>
+  {% for jewlery in jewleries %}
+
+        <div style="border-radius: 8px;" class="uk-width-1-1 uk-width-1-3@m uk-width-1-2@s uk-block fHarmattan ">
+
+    <a href="{% url 'jewlery:detail' jewlery.pk %}" style="border-radius: 12px;"  class="uk-card uk-card-default uk-grid-collapse uk-child-width-1-2 uk-margin darkgreyC" uk-scrollspy="cls: uk-animation-fade; delay: 100" uk-grid>
+      <div  class="uk-card-media-left uk-cover-container">
+          {% for pic in jewlery.pictures.all %}
+          {% if forloop.first %}
+            <img style="padding:10px;" src="{{pic.picture.url}}" alt="" uk-cover>
+            <canvas width="1000" height="1000"></canvas>
+            {% endif %}
+            {% endfor %}
+        </div>
+        <div>
+          <div class="uk-card-body fHarmattan  goldC-text">
+<div  class="uk-grid uk-grid-small" uk-grid>
+  <div style="margin-top:-4px;" class=" uk-width-1-1 uk-block fHarmattan ">{{jewlery.name}}</div>
+<div class=" uk-width-1-2 fHarmattan ">وزن</div>  <div class=" uk-width-1-2 fHarmattan whiteC-text">{{jewlery.weight}}gr</div>
+<div class=" uk-width-1-2 fHarmattan ">دسته بندی</div>
+ <div class=" uk-width-1-2 fHarmattan whiteC-text">
+{% if jewlery.is_goldset %}  سرویس طلا{% endif %}
+{% if jewlery.is_pendant %} مدال {% endif %}
+{% if jewlery.is_bracelet %} دستبند {% endif %}
+{% if jewlery.is_necklace %} گردنبند {% endif %}
+{% if jewlery.is_bangle %} النگو {% endif %}
+{% if jewlery.is_chain %} زنجیر {% endif %}
+{% if jewlery.is_earings %} گوشواره {% endif %}
+{% if jewlery.is_halfset %} نیم ست {% endif %}
+{% if jewlery.is_watch %} ساعت {% endif %}
+{% if jewlery.is_anklet %} پابند {% endif %}
+ </div>
+                <div class=" uk-width-1-2 fHarmattan ">قیمت</div>  <div class=" uk-width-1-2 fHarmattan whiteC-text">{{jewlery.pk|calculateprice}}</div>
+               <div class=" uk-width-1-2 fHarmattan ">اجرت فروش</div>  <div class=" uk-width-1-2 fHarmattan whiteC-text">{{jewlery.sale_wage}}</div>
+
+
+</div>
+            </div>
+        </div>
+    </a>
+<a href="{% url 'jewlery:update' jewlery.pk %}" class="uk-button goldC uk-width-1-1 uk-margin-small-bottom darkgreyC-text fHarmattan uk-text-large">ویرایش محصول</a>
+<a href="{% url 'order:listforjewlery' jewlery.pk %}" class="uk-button goldC uk-width-1-1 uk-margin-small-bottom darkgreyC-text fHarmattan uk-text-large">سفارشات این محصول</a>
+
+
+
+
+  </div>
+
+  {% endfor %}
+  </div>
+
+</div>
+    {% endblock %}

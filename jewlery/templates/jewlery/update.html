@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>
+ویرایش طلا | زر مارکت
+    </title>
+  </head>
+  <body>
+    <form enctype="multipart/form-data" method="POST">
+      {% csrf_token %}
+      {{form.as_p}}
+      <div class="row gold-text center fMarkazi">
+  با کلیک بر روی هر یک از عکس ها میتوانید آن را تغییر دهید
+</div>
+
+        {% for picture in jewlery.pictures.all %}
+        <div class="center col s12 m6 l6">
+        <a href="{% url 'jewlery:pictureupdate' pk=picture.pk %}"><img src="{{picture.picture.url}}" height="90" width="150"></a>
+        </div>
+        {% endfor %}
+
+        <a href="{% url 'jewlery:pictureadd' pk=jewlery.pk %}"  class=" tooltipped" data-position="bottom" data-tooltip="اضافه کردن عکس ‍‍" ><i style="color:#d4af37;" class="material-icons large">add_a_photo</i></a>
+
+<br><br>
+            {% if form.errors %}
+            <p class="fMarkazi white-text">مشکلی پیش آمد. لطفا فرم را دوباره و با دقت پر کنید</p>
+            {% endif %}
+                  <input type="submit" name="" value="submit">
+    </form>
+  </body>
+</html>

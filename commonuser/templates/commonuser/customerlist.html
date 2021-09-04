@@ -1,0 +1,32 @@
+{% extends "BaseTemplates/base1.html" %}
+
+{% block head_block %}
+<meta name=”robots” content=”noindex,follow”>
+<title>
+لیست مشتری | زر مارکت
+</title>
+{% endblock %}
+
+{% block body_block %}
+<br>
+<h3 style="font-size:30px;" class="goldC-text uk-text-center fHarmattan uk-text-large">لیست مشتریان عادی</h3>
+<br>
+<div style="padding:4%" class="uk-grid-match uk-text-center uk-grid-large" uk-grid>
+
+  {% for customer in customers %}
+  <div class="uk-width-1-1 uk-width-1-2@s uk-block">
+<div  class="uk-card uk-card-default uk-card-body darkgreyC">
+
+<div style="margin-top:-25px"  class=" fHarmattan uk-text-large" uk-grid>
+  <div class="uk-width-1-2 uk-text-left goldC-text" >شماره تماس</div><div class="uk-width-1-2 uk-text-right whiteC-text">{{customer.user.username}}</div>
+  <div class="uk-width-1-2 uk-text-left goldC-text" >نام</div><div class="uk-width-1-2 uk-text-right whiteC-text">{{customer.user.name}}</div>
+  <div class="uk-width-1-2 uk-text-left goldC-text" >درخواست طلا فروشی</div><div class="uk-width-1-2 uk-text-right whiteC-text">{% if customer.is_customer_request %}بله{% else %} خیر{% endif %}</div>
+
+<div class="uk-width-2-5 uk-text-left goldC-text" >آدرس</div><div class="uk-width-3-5 uk-text-right whiteC-text">{{customer.address}}</div>
+
+</div>
+</div>
+</div>
+  {% endfor %}
+
+    {% endblock %}

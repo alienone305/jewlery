@@ -1,0 +1,140 @@
+{% extends "BaseTemplates/base1.html" %}
+{% load customtags %}
+
+
+{% block head_block %}
+<meta name=”robots” content=”noindex,follow”>
+<title>
+{{jewlery.name}} | زر مارکت
+</title>
+{% endblock %}
+
+{% block body_block %}
+<div  class="uk-text-center ">
+<div style="margin:5%; padding: 3%;border-radius: 8px;" class="uk-card uk-card-large darkgreyC" uk-grid>
+  <div class=" uk-width-2-5@s uk-width-1-1 uk-block fHarmattan ">
+    <div style=" border-radius:20px " class="uk-position-relative uk-visible-toggle uk-light" tabindex="-1" uk-slider="center: true">
+
+        <ul  class="uk-slider-items uk-grid" uk-lightbox="animation: slide">
+          {% for pic in jewlery.pictures.all %}
+            <li class="uk-width-3-4">
+                <a class="uk-panel uk-inline" href="{{pic.picture.url}}" >
+                    <img width="2000" height="2000" src="{{pic.picture.url}}" alt="">
+
+                </a>
+            </li>
+            {% endfor %}
+        </ul>
+
+        <a style="color:#d4af37" class="uk-position-center-left uk-position-small uk-hidden-hover goldC-text" href="#" uk-slidenav-previous uk-slider-item="previous"></a>
+        <a style="color:#d4af37" class="uk-position-center-right uk-position-small uk-hidden-hover goldC-text" href="#" uk-slidenav-next uk-slider-item="next"></a>
+
+    </div>
+  </div>
+<div class="uk-width-3-5@s uk-width-1-1 fHarmattan uk-text-left goldC-text" uk-grid>
+  <div class=" uk-width-1-4 fHarmattan ">
+نام
+  </div>
+  <div class=" uk-width-1-4 fHarmattan uk-text-right whiteC-text">
+{{jewlery.name}}
+  </div>
+  <div class=" uk-width-1-4 fHarmattan ">دسته بندی</div>
+   <div class=" uk-width-1-4 fHarmattan uk-text-right whiteC-text">
+  {% if jewlery.is_goldset %}  سرویس طلا{% endif %}
+  {% if jewlery.is_pendant %} مدال {% endif %}
+  {% if jewlery.is_bracelet %} دستبند {% endif %}
+  {% if jewlery.is_necklace %} گردنبند {% endif %}
+  {% if jewlery.is_bangle %} النگو {% endif %}
+  {% if jewlery.is_chain %} زنجیر {% endif %}
+  {% if jewlery.is_earings %} گوشواره {% endif %}
+  {% if jewlery.is_halfset %} نیم ست {% endif %}
+  {% if jewlery.is_watch %} ساعت {% endif %}
+  {% if jewlery.is_anklet %} پابند {% endif %}
+   </div>
+  <div class=" uk-width-1-4 fHarmattan ">
+وزن
+  </div>
+  <div class=" uk-width-1-4 fHarmattan uk-text-right whiteC-text">
+{{jewlery.weight}}g
+  </div>
+  <div class=" uk-width-1-4 fHarmattan ">
+ساخت کشور
+  </div>
+  <div class=" uk-width-1-4 fHarmattan uk-text-right whiteC-text">
+{{jewlery.made_in}}
+  </div>
+  <div class=" uk-width-1-4 fHarmattan ">
+جنس
+  </div>
+  <div class=" uk-width-1-4 fHarmattan uk-text-right whiteC-text">
+{% if jewlery.is_unisex %}زنانه و مردانه{% else %}{% if jewlery.is_womanly %}زنانه{% else %}مردانه{% endif %}{% endif %}
+  </div>
+
+    <div class=" uk-width-1-4 fHarmattan ">
+  نام سازنده
+    </div>
+    <div class=" uk-width-1-4 fHarmattan uk-text-right whiteC-text">
+  {{jewlery.company_name}}
+    </div>
+    <div class=" uk-width-1-4 fHarmattan ">
+عیار
+    </div>
+    <div class=" uk-width-1-4 fHarmattan uk-text-right whiteC-text">
+  {{jewlery.karat}}
+    </div>
+    <div class=" uk-width-1-4 fHarmattan ">
+اجرت خرید
+    </div>
+    <div class=" uk-width-1-4 fHarmattan uk-text-right whiteC-text">
+  {{jewlery.buy_wage}}%
+    </div>
+    <div class=" uk-width-1-4 fHarmattan ">
+اجرت
+    </div>
+    <div class=" uk-width-1-4 fHarmattan uk-text-right whiteC-text">
+  {{jewlery.sale_wage}}%
+    </div>
+    <div class=" uk-width-1-4 fHarmattan ">
+اجرت فروش عمده
+    </div>
+    <div class=" uk-width-1-4 fHarmattan uk-text-right whiteC-text">
+  {{jewlery.wholesale_wage}}%
+    </div>
+    <div class=" uk-width-1-4 fHarmattan ">دسته بندی</div>
+     <div class=" uk-width-1-4 fHarmattan uk-text-right whiteC-text">
+    {% if jewlery.is_goldset %}  سرویس طلا{% endif %}
+    {% if jewlery.is_pendant %} مدال {% endif %}
+    {% if jewlery.is_bracelet %} دستبند {% endif %}
+    {% if jewlery.is_necklace %} گردنبند {% endif %}
+    {% if jewlery.is_bangle %} النگو {% endif %}
+    {% if jewlery.is_chain %} زنجیر {% endif %}
+    {% if jewlery.is_earings %} گوشواره {% endif %}
+    {% if jewlery.is_halfset %} نیم ست {% endif %}
+    {% if jewlery.is_watch %} ساعت {% endif %}
+    {% if jewlery.is_anklet %} پابند {% endif %}
+     </div>
+
+     <div class=" uk-width-1-2 fHarmattan uk-text-center">
+       <div style="border:solid 1px #d4af37; border-radius:5px; font-size:18px;direction: ltr;"  class="">
+         {{jewlery.pk|calculateprice}} T
+       </div>
+
+     </div>
+
+
+  </div>
+  <a href="{% url 'jewlery:update' jewlery.pk %}" class="uk-button goldC uk-width-1-1 uk-margin-small-bottom darkgreyC-text fHarmattan uk-text-large">ویرایش</a>
+  <a uk-toggle="target: #my-id{{jewlery.pk}}" type="button" class="uk-button redC uk-width-1-1 uk-margin-small-bottom darkgreyC-text fHarmattan uk-text-large">حذف</a>
+  <div id="my-id{{jewlery.pk}}"  uk-modal>
+      <div style="background-color:black;" class="uk-modal-dialog uk-modal-body">
+          <h2 class="uk-modal-title fHarmattan goldC-text ">از حذف این محصول مطمئن هستید؟ {{jewlery.name}}</h2>
+          <button class="uk-button uk-modal-close fHarmattan" type="button">کنسل</button>
+          <a href="{% url 'jewlery:delete' jewlery.pk %}" class="uk-button uk-button-primary redC fHarmattan" type="button">حذف</a>
+      </div>
+  </div>
+</div>
+
+</div>
+
+
+    {% endblock %}

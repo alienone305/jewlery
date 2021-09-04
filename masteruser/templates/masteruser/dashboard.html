@@ -1,0 +1,36 @@
+{% extends "BaseTemplates/base1.html" %}
+
+{% block head_block %}
+<meta name=”robots” content=”noindex,follow”>
+<title>
+داشبورد | زر مارکت
+</title>
+{% endblock %}
+
+{% block body_block %}
+<h1 style="text-shadow: 0 0 30px black" class="uk-text-center goldC-text fHarmattan">داشبورد</h1>
+<br><br>
+<div class="uk-grid-match uk-grid-small uk-text-center" uk-grid>
+  <div class="uk-width-1-6 uk-width-1-4@m">
+
+  </div>
+      <div class="uk-width-2-3 uk-width-1-2@m ">
+<a href="{% url 'jewlery:createunit' %}" class="uk-button goldC uk-width-1-1 uk-margin-small-bottom darkgreyC-text fHarmattan uk-text-large">تعیین فی</a>
+<a href="{% url 'jewlery:create' %}" class="uk-button goldC uk-width-1-1 uk-margin-small-bottom darkgreyC-text fHarmattan uk-text-large">ایجاد محصول</a>
+<a href="{% url 'jewlery:confirmedlist' %}" class="uk-button goldC uk-width-1-1 uk-margin-small-bottom darkgreyC-text fHarmattan uk-text-large">لیست محصولات تایید شده</a>
+<a href="{% url 'jewlery:unconfirmedlist' %}" class="uk-button goldC uk-width-1-1 uk-margin-small-bottom darkgreyC-text fHarmattan uk-text-large">لیست محصولات تایید نشده</a>
+<a href="{% url 'order:uncheckedlist' %}" class="uk-button goldC uk-width-1-1 uk-margin-small-bottom darkgreyC-text fHarmattan uk-text-large">سفارشات چک نشده</a>
+<a href="{% url 'order:checkedlist' %}" class="uk-button goldC uk-width-1-1 uk-margin-small-bottom darkgreyC-text fHarmattan uk-text-large">سفارشان چک شده</a>
+<a href="{% url 'order:deliveredlist' %}" class="uk-button goldC uk-width-1-1 uk-margin-small-bottom darkgreyC-text fHarmattan uk-text-large">سفارشات تحویل داده شده</a>
+<a href="{% url 'commonuser:customerlist' %}" class="uk-button goldC uk-width-1-1 uk-margin-small-bottom darkgreyC-text fHarmattan uk-text-large">لیست مشتریان</a>
+<a href="{% url 'commonuser:jewlerreqlist' %}" class="uk-button goldC uk-width-1-1 uk-margin-small-bottom darkgreyC-text fHarmattan uk-text-large">لیست طلا فروشان در انتظار تایید</a>
+<a href="{% url 'commonuser:jewlerlist' %}" class="uk-button goldC uk-width-1-1 uk-margin-small-bottom darkgreyC-text fHarmattan uk-text-large">لیست طلا فروشان تایید شده</a>
+<a href="{% url 'company:contactuslist' %}" class="uk-button goldC uk-width-1-1 uk-margin-small-bottom darkgreyC-text fHarmattan uk-text-large">لیست تماس با ما</a>
+
+</div>
+<div class="uk-width-1-6 uk-width-1-4@m">
+
+</div>
+</div>
+<br><br><br><br>
+    {% endblock %}

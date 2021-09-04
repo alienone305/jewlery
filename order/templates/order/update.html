@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>
+ویرایش سفارش | زر مارکت
+    </title>
+  </head>
+  <body>
+    <h1>update</h1>
+    jewlery name: {{jewlery.name}}<br><br>
+    <form  method="POST">
+
+      {{form.as_p}}
+      {% csrf_token %}
+      <input type="submit" name="" value="submit">
+    </form>
+  </body>
+</html>

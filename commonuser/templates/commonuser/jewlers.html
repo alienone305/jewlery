@@ -1,0 +1,33 @@
+{% extends "BaseTemplates/base1.html" %}
+
+{% block head_block %}
+<meta name=”robots” content=”noindex,follow”>
+<title>
+لیست طلا فروشان | زر مارکت
+</title>
+{% endblock %}
+
+{% block body_block %}
+<br>
+<h3 style="font-size:30px;" class="goldC-text uk-text-center fHarmattan uk-text-large">لیست طلا فروشان تایید شده</h3>
+<br>
+<div style="padding:4%" class="uk-grid-match uk-text-center uk-grid-large" uk-grid>
+
+  {% for jewler in jewlers %}
+  <div class="uk-width-1-1 uk-width-1-2@s uk-block">
+<div  class="uk-card uk-card-default uk-card-body darkgreyC">
+
+<div style="margin-top:-25px"  class=" fHarmattan uk-text-large" uk-grid>
+  <div class="uk-width-1-2 uk-text-left goldC-text" >شماره تماس</div><div class="uk-width-1-2 uk-text-right whiteC-text">{{jewler.user.username}}</div>
+  <div class="uk-width-1-2 uk-text-left goldC-text" >نام</div><div class="uk-width-1-2 uk-text-right whiteC-text">{{jewler.user.name}}</div>
+  <div class="uk-width-1-2 uk-text-left goldC-text" >طلا فروش تایید شده</div><div class="uk-width-1-2 uk-text-right whiteC-text">{% if jewler.is_jewler %}بله{% else %} خیر{% endif %}</div>
+
+<div class="uk-width-2-5 uk-text-left goldC-text" >آدرس</div><div class="uk-width-3-5 uk-text-right whiteC-text">{{jewler.address}}</div>
+  <div class="uk-width-1-1 uk-text-right whiteC-text"><a href="{% url 'commonuser:jewlerdeny' jewler.pk %}" class="uk-button goldC uk-width-1-1 uk-margin-small-bottom darkgreyC-text fHarmattan uk-text-large">رد درخواست</a></div>
+
+      </div>
+</div>
+</div>
+  {% endfor %}
+
+    {% endblock %}

@@ -1,0 +1,64 @@
+
+{% extends "BaseTemplates/base1.html" %}
+
+{% block head_block %}
+<meta name=”robots” content=”noindex,follow”>
+<title>
+پروفایل | زر مارکت
+</title>
+{% endblock %}
+{% block body_block %}
+<div style="margin:8%" class=" uk-text-center ">
+
+      <div class=" uk-block ">
+<div class="uk-card uk-card-hover uk-card-body darkgreyC ">
+    <h3 style="font-size:30px;" class="goldC-text uk-card-title uk-align-center fHarmattan">ناحیه کاربری</h3><br>
+      <div class="uk-grid-match uk-grid-small uk-text-center" uk-grid>
+
+      <div class="uk-width-3-5@m ">
+        <div class="uk-grid-match uk-grid-small uk-text-center" uk-grid>
+          <div class="uk-width-1-2 uk-width-1-2@m fHarmattan goldC-text uk-text-large ">
+        <div class="uk-text-left">
+          شماره همراه
+        </div>
+          </div>
+          <div class="uk-width-1-2 uk-width-1-2@m fHarmattan whiteC-text uk-text-right uk-text-large">
+        {{commonuser.user.username}}
+          </div>
+          <div class="uk-width-1-2 uk-width-1-2@m fHarmattan goldC-text uk-text-large">
+        <div class="uk-text-left">
+          نام و نام خانوادگی
+        </div>
+          </div>
+          <div class="uk-width-1-2 uk-width-1-2@m fHarmattan whiteC-text uk-text-right uk-text-large">
+        {{commonuser.user.name}}
+          </div>
+          <div class="uk-width-1-2 uk-width-1-2@m fHarmattan goldC-text uk-text-large">
+        <div class="uk-text-left">
+          آدرس
+        </div>
+          </div>
+          <div class="uk-width-1-2 uk-width-1-2@m fHarmattan whiteC-text uk-text-right uk-text-large">
+        {{commonuser.address}}
+          </div>
+        </div>
+      </div>
+
+      <div class="uk-width-2-5@m">
+        <a href="{% url 'commonuser:update' user.slug %}" class="uk-button goldC uk-width-1-1 uk-margin-small-bottom darkgreyC-text fHarmattan uk-text-large">ویرایش اطلاعات کاربری</a>
+        <a href="{% url 'order:listforuser' user.slug %}" class="uk-button goldC uk-width-1-1 uk-margin-small-bottom darkgreyC-text fHarmattan uk-text-large">لیست سفارشات</a>
+        <a href="{% url 'accounts:passwordchange' user.slug %}" class="uk-button goldC uk-width-1-1 uk-margin-small-bottom darkgreyC-text fHarmattan uk-text-large">تغییر رمز عبور</a>
+
+      </div>
+
+      </div>
+      <br>
+<br><br>
+    </form>
+</div>
+
+</div>
+</div>
+<br><br><br>
+
+{% endblock %}

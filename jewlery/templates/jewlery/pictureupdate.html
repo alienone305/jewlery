@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>
+ویرایش عکس | زر مارکت
+    </title>
+  </head>
+  <body>
+    <h1>Jewlery add</h1>
+    <form enctype="multipart/form-data" method="POST">
+      {% csrf_token %}
+      {{ form.as_p }}
+
+      <input type="submit" name="" value="submit">
+    </form>
+  </body>
+</html>

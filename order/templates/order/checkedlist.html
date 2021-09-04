@@ -1,0 +1,203 @@
+{% extends "BaseTemplates/base1.html" %}
+{% load customtags %}
+
+
+{% block head_block %}
+<meta name=”robots” content=”noindex,follow”>
+<title>
+سفارشات چک شده | زر مارکت
+</title>
+{% endblock %}
+
+{% block body_block %}
+<div  class="uk-text-center ">
+  <div class="fHarmattan goldC-text">
+    سفارشات چک شده
+  </div>
+  {% for order in orders %}
+<div style="margin:5%; padding: 3%;border-radius: 8px;" class="uk-card uk-card-large darkgreyC" uk-grid>
+
+  <div class=" uk-width-2-5@s uk-width-1-1 uk-block fHarmattan ">
+    <div style=" border-radius:20px; margin-top:30px" class="uk-position-relative uk-visible-toggle uk-light" tabindex="-1" uk-slider="center: true">
+
+        <ul  class="uk-slider-items uk-grid" uk-lightbox="animation: slide">
+          {% for pic in order.jewlery.pictures.all %}
+            <li class="uk-width-3-4">
+                <a class="uk-panel uk-inline" href="{{pic.picture.url}}">
+                    <img width="2000" height="2000" src="{{pic.picture.url}}" alt="">
+
+                </a>
+            </li>
+            {% endfor %}
+        </ul>
+
+        <a style="color:#d4af37" class="uk-position-center-left uk-position-small uk-hidden-hover goldC-text" href="#" uk-slidenav-previous uk-slider-item="previous"></a>
+        <a style="color:#d4af37" class="uk-position-center-right uk-position-small uk-hidden-hover goldC-text" href="#" uk-slidenav-next uk-slider-item="next"></a>
+
+    </div>
+  </div>
+<div class="uk-width-3-5@s uk-width-1-1 fHarmattan uk-text-left goldC-text" uk-grid>
+  <div style="margin-top:30px;margin-right:20px; border-bottom:1px solid #d4af37" class="uk-width-1-1 fHarmattan goldC-text uk-text-center uk-text-bold">
+مشخصات طلا
+  </div>
+  <div class=" uk-width-1-4 fHarmattan ">
+نام
+  </div>
+  <div class=" uk-width-1-4 fHarmattan uk-text-right whiteC-text">
+{{order.jewlery.name}}
+  </div>
+  <div class=" uk-width-1-4 fHarmattan ">دسته بندی</div>
+   <div class=" uk-width-1-4 fHarmattan uk-text-right whiteC-text">
+  {% if order.jewlery.is_goldset %}  سرویس طلا{% endif %}
+  {% if order.jewlery.is_pendant %} مدال {% endif %}
+  {% if order.jewlery.is_bracelet %} دستبند {% endif %}
+  {% if order.jewlery.is_necklace %} گردنبند {% endif %}
+  {% if order.jewlery.is_bangle %} النگو {% endif %}
+  {% if order.jewlery.is_chain %} زنجیر {% endif %}
+  {% if order.jewlery.is_earings %} گوشواره {% endif %}
+  {% if order.jewlery.is_halfset %} نیم ست {% endif %}
+  {% if order.jewlery.is_watch %} ساعت {% endif %}
+  {% if order.jewlery.is_anklet %} پابند {% endif %}
+   </div>
+  <div class=" uk-width-1-4 fHarmattan ">
+وزن
+  </div>
+  <div class=" uk-width-1-4 fHarmattan uk-text-right whiteC-text">
+{{order.jewlery.weight}}g
+  </div>
+  <div class=" uk-width-1-4 fHarmattan ">
+ساخت کشور
+  </div>
+  <div class=" uk-width-1-4 fHarmattan uk-text-right whiteC-text">
+{{order.jewlery.made_in}}
+  </div>
+  <div class=" uk-width-1-4 fHarmattan ">
+جنس
+  </div>
+  <div class=" uk-width-1-4 fHarmattan uk-text-right whiteC-text">
+{% if order.jewlery.is_unisex %}زنانه و مردانه{% else %}{% if order.jewlery.is_womanly %}زنانه{% else %}مردانه{% endif %}{% endif %}
+  </div>
+
+    <div class=" uk-width-1-4 fHarmattan ">
+  نام سازنده
+    </div>
+    <div class=" uk-width-1-4 fHarmattan uk-text-right whiteC-text">
+  {{order.jewlery.company_name}}
+    </div>
+    <div class=" uk-width-1-4 fHarmattan ">
+عیار
+    </div>
+    <div class=" uk-width-1-4 fHarmattan uk-text-right whiteC-text">
+  {{order.jewlery.karat}}
+    </div>
+    <div class=" uk-width-1-4 fHarmattan ">
+اجرت
+    </div>
+    <div class=" uk-width-1-4 fHarmattan uk-text-right whiteC-text">
+  {{order.sale_wage}}%
+    </div>
+
+     <div class=" uk-width-1-1 fHarmattan uk-text-center">
+       <div style="border:solid 1px #d4af37; border-radius:5px; font-size:18px;direction: ltr;"  class="">
+         {{order.price|pricedashes}} R
+       </div>
+
+     </div>
+  </div>
+     <div style="margin-top:30px;margin-right:20px; border-bottom:1px solid #d4af37" class="uk-width-1-1 fHarmattan goldC-text uk-text-center uk-text-bold">
+   مشخصات سفارش
+     </div>
+
+     <div class=" uk-width-1-4 uk-width-1-6@s goldC-text fHarmattan ">
+تاریخ سفارش
+     </div>
+     <div class=" uk-width-1-4 uk-width-1-6@s fHarmattan uk-text-right whiteC-text">
+   {{order.jdatetime.date}}
+     </div>
+     <div class=" uk-width-1-4 uk-width-1-6@s goldC-text fHarmattan ">
+زمان سفارش
+     </div>
+     <div style="direction:ltr;" class=" uk-width-1-4 uk-width-1-6@s fHarmattan uk-text-right whiteC-text">
+   {{order.jdatetime.time}}
+     </div>
+     <div class=" uk-width-1-4 uk-width-1-6@s goldC-text fHarmattan ">
+هر مثقال طلا در زمان سفارش
+     </div>
+     <div style="direction:ltr;" class=" uk-width-1-4 uk-width-1-6@s fHarmattan uk-text-right whiteC-text">
+   {{order.unit|pricedashes}} R
+     </div>
+     <div class=" uk-width-1-4 uk-width-1-6@s goldC-text fHarmattan ">
+تعداد سفارش
+     </div>
+     <div class=" uk-width-1-4 uk-width-1-6@s fHarmattan uk-text-right whiteC-text">
+   {{order.numbers}}
+     </div>
+
+     <div class=" uk-width-1-4 uk-width-1-6@s goldC-text fHarmattan ">
+تعداد سفارش
+     </div>
+     <div class=" uk-width-1-4 uk-width-1-6@s fHarmattan uk-text-right whiteC-text">
+   {{order.numbers}}
+     </div>
+     {% if order.commonuser.is_jewler %}
+     <div class=" uk-width-1-4 uk-width-1-6@s goldC-text fHarmattan ">
+وزن سفارش
+     </div>
+     <div class=" uk-width-1-4 uk-width-1-6@s fHarmattan uk-text-right whiteC-text">
+   {{order.weight}}
+ </div>{% endif %}
+     <div class=" uk-width-1-4 uk-width-1-6@s goldC-text fHarmattan ">
+وضعیت سفارش
+     </div>
+     <div class=" uk-width-1-4 uk-width-1-6@s fHarmattan uk-text-right whiteC-text">
+{% if order.is_delivered %}تحویل داده شده{% else %}{% if order.is_checked %}در حال ارسال{% endif %}در حال بررسی{% endif %}
+     </div>
+     <div class=" uk-width-1-4 uk-width-1-6@s goldC-text fHarmattan ">
+شماره تماس کاربر
+     </div>
+     <div class=" uk-width-1-4 uk-width-1-6@s fHarmattan uk-text-right whiteC-text">
+   {{order.commonuser.user.username}}
+     </div>
+     <div class=" uk-width-1-4 uk-width-1-6@s goldC-text fHarmattan ">
+شماره تماس سفارش
+     </div>
+     <div class=" uk-width-1-4 uk-width-1-6@s fHarmattan uk-text-right whiteC-text">
+   {{order.phone_number}}
+     </div>
+     <div class=" uk-width-1-4 uk-width-1-6@s goldC-text fHarmattan ">
+نام سفارش دهنده
+     </div>
+     <div class=" uk-width-1-4 uk-width-1-6@s fHarmattan uk-text-right whiteC-text">
+   {{order.commonuser.user.name}}
+     </div>
+     <div class=" uk-width-1-1 uk-width-1-1@s goldC-text fHarmattan ">
+
+     </div>
+
+     <div class=" uk-width-1-2 uk-width-1-3@s goldC-text fHarmattan ">
+آدرس سفارش
+     </div>
+     <div class=" uk-width-1-2 uk-width-1-3@s fHarmattan uk-text-right whiteC-text">
+   {{order.address}}
+     </div>
+
+
+     <div class=" uk-width-1-2 uk-width-1-3@s goldC-text fHarmattan ">
+توضیحات سفارش
+     </div>
+     <div class=" uk-width-1-2 uk-width-1-3@s fHarmattan uk-text-right whiteC-text">
+   {{order.description}}
+     </div>
+
+
+
+</div>
+<a href="{% url 'order:uncheck' order.pk %}" class="uk-button goldC uk-width-1-3 uk-margin-small-bottom darkgreyC-text fHarmattan uk-text-large"></a>انتقال به چک نشده ها
+<a href="{% url 'order:delete' order.pk %}" class="uk-button redC uk-width-1-3 uk-margin-small-bottom darkgreyC-text fHarmattan uk-text-large">حذف</a>
+<a href="{% url 'order:deliver' order.pk %}" class="uk-button goldC uk-width-1-3 uk-margin-small-bottom darkgreyC-text fHarmattan uk-text-large">تحویل داده شد</a>
+
+{% endfor %}
+</div>
+
+
+    {% endblock %}

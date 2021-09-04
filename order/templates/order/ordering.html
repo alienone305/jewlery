@@ -1,0 +1,65 @@
+{% extends "BaseTemplates/base1.html" %}
+
+{% block head_block %}
+<meta name=”robots” content=”noindex,follow”>
+<title>
+سفارش محصول | زر مارکت
+</title>
+{% endblock %}
+
+{% block body_block %}
+
+
+<div   class="uk-text-center ">
+    <form  method="POST">
+<div style="margin: 3% ; padding: 2.5%; border-radius: 8px;" class="uk-card uk-card-large uk-child-width-1-3@m uk-child-width-1-2@s darkgreyC" uk-grid>
+
+  <div style="margin-top:30px;margin-right:20px; border-bottom:1px solid #d4af37" class="uk-width-1-1 fHarmattan goldC-text uk-text-center uk-text-bold">
+اطلاعات تماس
+  </div>
+
+    {% csrf_token %}
+    <div class="fHarmattan goldC-text">
+نام
+{{form.name}}
+    </div>
+    <div class="fHarmattan goldC-text">
+شماره تماس
+{{form.phone_number}}
+    </div>
+    <div class="fHarmattan goldC-text">
+آدرس محل تحویل
+{{form.address}}
+    </div>
+    <div style="margin-top:30px;margin-right:20px; border-bottom:1px solid #d4af37" class="uk-width-1-1 fHarmattan goldC-text uk-text-center uk-text-bold">
+اطلاعات تحویل
+    </div>
+    <div class="fHarmattan goldC-text">
+تعداد
+{{form.numbers}}
+    </div>
+    {% if user.commonusers.is_jewler %}
+    <div class="fHarmattan goldC-text">
+وزن
+{{form.weight}}
+    </div>
+    {% endif %}
+    <div class="fHarmattan goldC-text">
+توضیحات نحوه تحویل
+{{form.description}}
+    </div>
+    <div class="fHarmattan goldC-text">
+<button style="margin-top:25px"type="submit" class="uk-align-center uk-button goldC uk-width-1-1 uk-margin-small-bottom darkgreyC-text fHarmattan uk-text-large">نهایی کردن سفارش</button>
+    </div>
+
+    <div style="margin-top:30px;margin-right:20px; border-bottom:1px solid #d4af37" class="uk-width-1-1 fHarmattan goldC-text uk-text-center uk-text-bold">
+{{form.errors}}
+    </div>
+
+</div>
+  </form>
+</div>
+
+
+
+    {% endblock %}

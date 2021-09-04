@@ -1,0 +1,14 @@
+user name and phone number in password reset views must match
+phone number validator for front end in signup page
+paginator for products/ ALL orderslist list page
+sort by date in All Orders list
+
+check all titles in html headers
+create a way to adjust cost for jewleries and show them in jewlery list and detail (order cost must not change)
+
+check if sessions signup condition for several users moshkel daraaaaad.
+(different users should have different sessions)
+
+ling instagram and telegram accounts to footer and contacus page
+
+Fix Time zone

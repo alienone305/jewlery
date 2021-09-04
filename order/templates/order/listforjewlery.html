@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>
+لیست سفارشات هر محصول | زر مارکت
+    </title>
+  </head>
+  <body>
+    {% for order in orders %}
+    {{order.commonuser.user.username}}
+    {{order.jewlery.name}}
+    {{order.number}}
+    {{order.weight}}
+    {{order.is_checked}}
+    {% endfor %}
+
+  </body>
+</html>

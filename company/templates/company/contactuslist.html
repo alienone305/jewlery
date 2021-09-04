@@ -1,0 +1,31 @@
+{% extends "BaseTemplates/base1.html" %}
+
+{% block head_block %}
+<meta name=”robots” content=”noindex,follow”>
+<title>
+لیست تماس با ما | زر مارکت
+</title>
+{% endblock %}
+
+{% block body_block %}
+<br>
+<h3 style="font-size:30px;" class="goldC-text uk-text-center fHarmattan uk-text-large">لیست تماس با ما</h3>
+<br>
+<div style="padding:4%" class="uk-grid-match uk-text-center uk-grid-large" uk-grid>
+
+  {% for contactus in contactus_list %}
+  <div class="uk-width-1-1 uk-width-1-2@s uk-block">
+<div  class="uk-card uk-card-default uk-card-body darkgreyC">
+
+<div style="margin-top:-25px"  class=" fHarmattan uk-text-large" uk-grid>
+  <div class="uk-width-1-2 uk-text-left goldC-text" >شماره تماس</div><div class="uk-width-1-2 uk-text-right whiteC-text">{{contactus.phone_number}}</div>
+  <div class="uk-width-1-2 uk-text-left goldC-text" >نام</div><div class="uk-width-1-2 uk-text-right whiteC-text">{{contactus.name}}</div>
+
+<div class="uk-width-1-1 uk-text-center goldC-text" >متن درخواست یا پیشنهاد یا انتقاد</div><div class="uk-width-1-1 uk-text-right whiteC-text">{{contactus.request}}</div>
+
+</div>
+</div>
+</div>
+  {% endfor %}
+
+    {% endblock %}

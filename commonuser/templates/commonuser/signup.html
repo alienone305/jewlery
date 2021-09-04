@@ -1,0 +1,106 @@
+{% extends "BaseTemplates/base1.html" %}
+
+{% block head_block %}
+<meta name=”robots” content=”noindex,follow”>
+<title>
+عضویت | زر مارکت
+</title>
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+{% endblock %}
+{% block body_block %}
+<div   class="uk-text-center ">
+  <div style="padding:10%">
+
+
+<div style="padding: 3%;border-radius: 8px;" uk-grid>
+  <div class=" uk-width-1-1 uk-block fHarmattan ">
+<div class="uk-card uk-card-hover uk-card-body darkgreyC ">
+    <h3 style="font-size:30px;" class="goldC-text uk-card-title uk-align-center fHarmattan">عضویت</h3>
+    <form enctype="multipart/form-data" method="POST">
+      {% csrf_token %}
+      <div class="uk-grid-match uk-grid-small uk-text-center" uk-grid>
+
+      <div class="uk-width-1-2@m">
+{{user_form.username}}
+      </div>
+
+      <div class="uk-width-1-2@m">
+      {{user_form.name}}
+      </div>
+
+      <div class="uk-width-1-2@m">
+      {{user_form.password1}}
+      </div>
+
+      <div class="uk-width-1-2@m">
+      {{user_form.password2}}
+      </div>
+
+
+      <div class="uk-width-1-2@m">
+      <label style="padding-top:8px; white-space:pre" class="uk-text-right fHarmattan goldC-text">{{commonuser_form.is_jewler_request}}   طلا و جواهر فروش هستید؟ </label>
+      </div>
+
+      <div class="uk-width-1-2@m">
+      <label style="padding-top:8px; white-space:pre" class="uk-text-right fHarmattan goldC-text">{{user_form.terms}}<a href="{% url 'company:termsandconditions' %}">   شرایط و قوانین</a> را خوانده و قبول دارم</label>
+      </div>
+      <div class="uk-width-1-1@m">
+      {{commonuser_form.address}}
+      </div>
+
+              {% if user_form.errors or commonuser_form.errors %}
+                  <div class="uk-width-1-1">
+              <p  class="fHarmattan goldC-text">لطفا در وارد کردن فیلد ها دقت کنید.</p>
+              <p  class="fHarmattan goldC-text">{{user_form.errors}}</p>
+              <p  class="fHarmattan goldC-text">{{commonuser_form.errors}}</p>
+              </div>
+              {% endif %}
+
+      </div>
+      <br>
+      <button style="margin-top:20px;" class="uk-button uk-button-primary fHarmattan goldC darkgreyC-text" type="submit">تایید
+    </button><br><br>
+    </form>
+</div>
+
+</div>
+  </div>
+</div>
+<div class="uk-grid-match uk-text-center" uk-grid>
+
+
+  <div class="uk-width-expand" style=" width:43%; border-top: solid #d4af37  1px;">
+
+  </div>
+  <div class="uk-align-center uk-width-1-5" style="margin-top:-20px;padding-left:30px;width:105px;" >
+<i class="medium material-icons goldC-text" style="font-size: 45px;">fingerprint</i>
+  </div>
+  <div class="uk-width-expand" style="margin-left:-30px; width:43%; border-top: solid #d4af37 1px;" >
+
+  </div>
+</div>
+
+<div class="uk-text-center">
+  <h3 class="fHarmattan goldC-text">حساب کاربری دارید؟</h3>
+    <a class="uk-button uk-button-large darkgreyC-text goldC fHarmattan uk-text-large" href="{% url 'accounts:login' %}">ورود</a>
+  </div>
+<br><br>
+</div>
+{% endblock %}
+{% block script_block %}
+<script type="text/javascript">
+  function myFunction() {
+  // Get the checkbox
+  var checkBox = document.getElementById("myCheck");
+  // Get the output text
+  var text = document.getElementById("text");
+
+  // If the checkbox is checked, display the output text
+  if (checkBox.checked == true){
+    text.style.display = "block";
+  } else {
+    text.style.display = "none";
+  }
+}
+</script>
+{% endblock %}

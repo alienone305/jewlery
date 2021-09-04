@@ -1,0 +1,72 @@
+{% extends "BaseTemplates/base1.html" %}
+
+{% block head_block %}
+<meta name=”robots” content=”noindex,follow”>
+<title>
+داشبورد | شعله خیز
+</title>
+{% endblock %}
+
+{% block body_block %} 
+
+    {% endblock %}
+
+
+
+
+<!-- ################## form ############## -->
+
+
+{% extends "BaseTemplates/base1.html" %}
+
+{% block head_block %}
+<meta name=”robots” content=”noindex,follow”>
+<title>
+ورود | شعله خیز
+</title>
+{% endblock %}
+{% block body_block %}
+<br>
+<div class="uk-grid-match uk-grid-small uk-text-center " uk-grid>
+  <div class="uk-width-1-6 uk-width-1-4@m">
+
+  </div>
+      <div class="uk-width-2-3 uk-width-1-2@m uk-block ">
+<div class="uk-card uk-card-hover uk-card-body darkgreyC ">
+    <h3 style="font-size:30px;" class="goldC-text uk-card-title uk-align-center fHarmattan">تماس با ما</h3>
+    <form enctype="multipart/form-data" method="POST">
+      {% csrf_token %}
+      <div class="uk-grid-match uk-grid-small uk-text-center" uk-grid>
+
+      <div class="uk-width-1-2@m">
+      {{form.name}}
+      </div>
+
+      <div class="uk-width-1-2@m">
+      {{form.phone_number}}
+      </div>
+      <div class="uk-width-1-1@m">
+      {{form.request}}
+      </div>
+
+
+              {% if form.errors %}
+                  <div class="uk-width-1-1">
+              <p  class="fHarmattan goldC-text">مشکلی پیش آمد. لطفا دوباره سعی کنید</p>
+              </div>
+              {% endif %}
+
+      </div>
+      <br>
+      <button style="margin-top:20px;" class="uk-button uk-button-primary fHarmattan goldC darkgreyC-text" type="submit">تایید
+    </button><br><br>
+    </form>
+</div>
+<div class="uk-width-1-6 uk-width-1-4@m">
+
+</div>
+</div>
+</div>
+<br><br><br>
+
+{% endblock %}

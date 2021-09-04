@@ -1,0 +1,18 @@
+{% extends "BaseTemplates/base1.html" %}
+
+{% block head_block %}
+<meta name=”robots” content=”noindex,follow”>
+<title>
+لیست مدیران | زر مارکت
+</title>
+{% endblock %}
+{% block body_block %}
+    {% for masteruser in masterusers %}
+    {{masteruser.user.username}}
+    delete with slug
+    <a href="{% url 'masteruser:delete' masteruser.user.slug %}">delete ZERT</a><br>
+    ------------------------------------------------------ <br>
+    {% endfor %}
+
+
+    {% endblock %}
