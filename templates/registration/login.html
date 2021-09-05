@@ -20,9 +20,15 @@
       {% csrf_token %}
       <div class="uk-grid-match uk-grid-small uk-text-center" uk-grid>
 
-      <div class="uk-width-1-2@m">
-{{form.username}}
+        <div class="uk-width-1-2@m" >
+                <div class="uk-width-5-6">
+      {{form.username}}
       </div>
+          <div class="uk-width-1-6 goldC-text fHarmattan " style="direction:ltr; font-size:20px;padding-top:5px; " >
+  +98
+          </div>
+
+        </div>
 
       <div class="uk-width-1-2@m">
       {{form.password}}
@@ -68,4 +74,7 @@
     <a class="uk-button uk-button-large whiteC-text goldC fHarmattan uk-text-large darkgreyC-text" href="{% url 'commonuser:signup' %}">عضویت</a>
   </div>
 <br><br>
+{% endblock %}
+{% block script_block %}
+
 {% endblock %}

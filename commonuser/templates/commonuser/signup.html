@@ -20,9 +20,19 @@
       {% csrf_token %}
       <div class="uk-grid-match uk-grid-small uk-text-center" uk-grid>
 
-      <div class="uk-width-1-2@m">
-{{user_form.username}}
+      <div class="uk-width-1-2@m" >
+              <div class="uk-width-5-6">
+    {{user_form.username}}
+    </div>
+        <div class="uk-width-1-6 goldC-text " style="direction:ltr; font-size:18px;padding-top:5px; " >
+          <span id="phonenumbervalidator" class="helper-text" data-error="wrong" data-success="right"></span>
++98
+
+        </div>
+
       </div>
+
+
 
       <div class="uk-width-1-2@m">
       {{user_form.name}}
@@ -58,8 +68,10 @@
 
       </div>
       <br>
-      <button style="margin-top:20px;" class="uk-button uk-button-primary fHarmattan goldC darkgreyC-text" type="submit">تایید
-    </button><br><br>
+      <div id="button">
+
+</div>
+<br><br>
     </form>
 </div>
 
@@ -102,5 +114,30 @@
     text.style.display = "none";
   }
 }
+</script>
+
+<script>
+  function checkLength(el) {
+    if (el.value.length == 10) {
+var str = "<i class='right tiny material-icons goldC-text'>done_all</i>";
+var result = str.fontcolor("green");
+var str2 = "        <button style='margin-top:20px;'  class='uk-button uk-button-primary fHarmattan goldC darkgreyC-text' type='submit'>تایید</button>";
+var result2 = str2.fontcolor("green");
+document.getElementById("phonenumbervalidator").innerHTML = result;
+document.getElementById("button").innerHTML = result2;
+
+    }
+    if (isNaN(el.value) || el.value.length != 10 && el.value.length !=0) {
+var str = "<i class='right tiny material-icons redC-text'>close</i>";
+var result = str.fontcolor("red");
+document.getElementById("phonenumbervalidator").innerHTML = result;
+var str2 = "";
+var result2 = str2.fontcolor("green");
+document.getElementById("button").innerHTML = result2;
+
+    }
+
+
+  }
 </script>
 {% endblock %}

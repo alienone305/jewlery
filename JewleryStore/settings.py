@@ -101,6 +101,8 @@ DATABASES = {
     }
 }
 
+KAVENEGAR_PHONE_NUMBER = '30383967456C38706753473546583443536233774E374E6E702B5832386C7648'
+KAVENEGAR_API_KEY = '10008000300010'
 
 # Password validation
 # https://docs.djangoproject.com/en/3.2/ref/settings/#auth-password-validators

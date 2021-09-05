@@ -12,6 +12,7 @@ import datetime
 import random
 from django.conf import settings
 from django.utils import timezone
+from kavenegar import KavenegarAPI
 
 #handmade
 from accounts.models import UserModel
@@ -23,7 +24,7 @@ from commonuser.decorators import commonuser_required
 
 # Create your views here.
 def CommonUserSignupView(request):
-    #api = KavenegarAPI(settings.KAVENEGAR_API_KEY)
+    api = KavenegarAPI(settings.KAVENEGAR_API_KEY)
     try:
         last_retry_str = request.session['last_retry']
         retries = request.session['retries']
@@ -50,17 +51,15 @@ def CommonUserSignupView(request):
                      c = random.choice(var)
                      random_code += c
                  code = random_code
+                 phone_number = '0' + user_form.cleaned_data.get('username')
                  ######### send code to commonuser
-                 '''
                  params = {
                  'sender': settings.KAVENEGAR_PHONE_NUMBER,
                  'receptor': phone_number,
-                 'message' : 'سامانه ورزش کن \n' +'کد فعالسازی شما' +  ' :' + code
+                 'message' : 'سایت زر مارکت \n' +'کد فعالسازی شما' +  ' :' + code
                  }
-                 '''
                  try:
-                     #response = api.sms_send(params)
-                     print(code)
+                     response = api.sms_send(params)
                      request.session['code'] =  code
                      now = datetime.datetime.now() + datetime.timedelta(minutes=2)
                      str_now = str(now.year)+'-'+str(now.month)+'-'+str(now.day)+' '+str(now.hour)+':'+str(now.minute)+':'+str(now.second)

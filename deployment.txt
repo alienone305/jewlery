@@ -12,3 +12,5 @@ check if sessions signup condition for several users moshkel daraaaaad.
 ling instagram and telegram accounts to footer and contacus page
 
 Fix Time zone
+
+mail server

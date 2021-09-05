@@ -16,6 +16,7 @@ from django.contrib.auth.password_validation import validate_password, MinimumLe
 from django.contrib.auth import authenticate, login
 import random
 from django.conf import settings
+from kavenegar import KavenegarAPI
 
 #handmade
 from accounts.decorators import superuser_required
@@ -73,7 +74,7 @@ def PasswordChangeView(request,slug):
 
 
 def ForgotPasswordView(request):
-    #api = KavenegarAPI(settings.KAVENEGAR_API_KEY)
+    api = KavenegarAPI(settings.KAVENEGAR_API_KEY)
     try:
         last_retry_str = request.session['last_retry']
         last_retry = datetime.datetime.strptime(last_retry_str,"%Y-%m-%d %H:%M:%S")
@@ -88,26 +89,26 @@ def ForgotPasswordView(request):
             phone_number_exists = False
             if form.is_valid():
                 phone_number = form.cleaned_data.get('phone_number')
+                number = '0'+phone_number
 
                 try :
                     user = get_object_or_404(UserModel,username = phone_number)
                     if user :
                         var = 'abcdefghijklmnpqrstuvwxyzABCDEFIJKLMNPQRSTUVWXYZ123456789'
                         new_password=''
-                        for i in range(0,random.randrange(10,13,1)):
+                        for i in range(0,random.randrange(7,8,1)):
                             c = random.choice(var)
                             new_password += c
 
-                            '''
+
                         params = {
                         'sender': settings.KAVENEGAR_PHONE_NUMBER,
-                        'receptor': phone_number,
-                        'message' : 'سامانه ورزش کن\n' + str(user.username) + ' :'+'نام کاربری شما'+'\n'+ new_password +' :'+ 'رمز عبور جدید شما '
-                        }'''
-                        #response = api.sms_send(params)
+                        'receptor': number,
+                        'message' : 'سایت زر مارکت\n' + str(user.username) + ' :'+'نام کاربری شما'+'\n'+ new_password +' :'+ 'رمز عبور جدید شما '
+                        }
+                        response = api.sms_send(params)
                         phone_number_exists = True
                         user.set_password(new_password)
-                        print(new_password)
                         user.save()
                         now = datetime.datetime.now() + datetime.timedelta(minutes=3)
                         str_now = str(now.year)+'-'+str(now.month)+'-'+str(now.day)+' '+str(now.hour)+':'+str(now.minute)+':'+str(now.second)
