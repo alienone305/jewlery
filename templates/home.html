@@ -8,12 +8,12 @@
 <meta name="keywords" content="زر مارکت, زرمارکت,خرید طلا,فروش طلا,خرید جواهر,فروش جواهر,خرید جواهرات,فروش جواهرات,خرید طلا و جواهرات,فروش طلا و جواهرات,خریئ طلا کمترین قیمت,فروش طلا کمترین قیمت,خرید و فروش طلا و جواهرات,خرید و فروش طلا و جواهرات کمترین قیمت,پایین ترین قیمت,کمترین قیمت,طلا,جواهر,جواهرات">
 
 <title>
-خانه | زر مارکت
+فروشگاه طلا و جواهرات | زر مارکت
 </title>
 {% endblock %}
 
 {% block body_block %}
-<div class="uk-text-center ">
+<div class="uk-text-center " style="overflow-x: hidden">
   <div style="font-size:40px;" class="fHarmattan goldC-text">
     زر مارکت
     <br>
@@ -32,7 +32,7 @@
     <div class=" uk-width-1-1 uk-width-2-3@s fHarmattan uk-text-center">
 
     <div style="font-size:30px;" class="fHarmattan goldC-text">
-      <div uk-parallax="y: -250" style="border:solid 1px #d4af37; border-radius:5px; font-size:32px; margin:8px;direction: ltr; padding:7px;"  class="">
+      <div uk-parallax="y: -250" style="border:solid 1px #d4af37; border-radius:5px; font-size:32px; padding:8px;direction: ltr; padding:7px;"  class="">
   هر گرم طلا به ریال
   {% if error %}
   {{error}}
@@ -43,7 +43,7 @@
       </div>
     </div>
     <div  class="fHarmattan goldC-text">
-      <div uk-parallax="y: -250" style="border:solid 1px #d4af37; border-radius:5px; font-size:32px; margin:8px;direction: ltr;padding:7px"  class="">
+      <div uk-parallax="y: -250" style="border:solid 1px #d4af37; border-radius:5px; font-size:32px; padding:8px;direction: ltr;padding:7px"  class="">
         هر مثقال طلا به ریال
         {% if error %}
         {{error}}
@@ -52,13 +52,13 @@
         {% endif %}
       </div>
     </div>
-      <div  uk-parallax="y: -250" style="font-size:32px; margin:8px;" class="fHarmattan goldC-text">
+      <div  uk-parallax="y: -250" style="font-size:32px; padding :8px;" class="fHarmattan goldC-text">
 پرداخت بعد از تحویل جنس
       </div>
-      <div uk-parallax="y: -250" style="font-size:32px; margin:8px;" class="fHarmattan goldC-text">
+      <div uk-parallax="y: -250" style="font-size:32px; padding:8px;" class="fHarmattan goldC-text">
 ارسال به تمامی نقاط کشور
       </div>
-      <a  uk-parallax="y: -250" style="font-size:32px; margin:8px;" href="{% url 'jewlery:publiclist' %}" class="uk-button goldC darkgreyC-text fHarmattan uk-text-large">جستجوی طلا و جواهرات</a>
+      <a  uk-parallax="y: -250" style="font-size:32px; padding:8px;" href="{% url 'jewlery:publiclist' %}" class="uk-button goldC darkgreyC-text fHarmattan uk-text-large">جستجوی طلا و جواهرات</a>
   </div>
     </div>
 
@@ -289,7 +289,7 @@
 
 <br>
 
-<div style="margin:10px; font-size:20px;" class="fHarmattan goldC-text uk-text-right">
+<div style="padding:10px; font-size:20px;" class="fHarmattan goldC-text uk-text-right">
   طلا و جواهرات پر بازدید >
 </div>
     <div  class="uk-slider-container-offset uk-visible@s" uk-slider="autoplay: true; autoplay-interval:2400">
@@ -345,11 +345,11 @@
 
         </div>
 
-        <ul class="uk-slider-nav uk-dotnav uk-flex-center uk-margin"></ul>
+        <ul class="uk-slider-nav uk-dotnav uk-flex-center"></ul>
 
     </div>
 
-    <div style="margin-right:-10%; margin-left:-10%" class="uk-hidden@s uk-position-relative uk-visible-toggle uk-light" tabindex="-1" uk-slider="center: true; autoplay:true; autoplay-interval:2400">
+    <div  class="uk-hidden@s uk-position-relative uk-visible-toggle uk-light" tabindex="-1" uk-slider="center: true; autoplay:true; autoplay-interval:2400">
 
         <div class="uk-position-relative uk-visible-toggle uk-light" tabindex="-1">
 
@@ -402,11 +402,11 @@
 
         </div>
 
-        <ul class="uk-slider-nav uk-dotnav uk-flex-center uk-margin"></ul>
+        <ul class="uk-slider-nav uk-dotnav uk-flex-center"></ul>
 
     </div>
 
-    <div style="margin:10px; font-size:20px;" class="fHarmattan goldC-text uk-text-right">
+    <div style="padding:10px; font-size:20px;" class="fHarmattan goldC-text uk-text-right">
 لیست طلا و جواهرات >
     </div>
         <div  class="uk-slider-container-offset uk-visible@s" uk-slider="autoplay: true; autoplay-interval:2400">
@@ -462,12 +462,12 @@
 
             </div>
 
-            <ul class="uk-slider-nav uk-dotnav uk-flex-center uk-margin"></ul>
+            <ul class="uk-slider-nav uk-dotnav uk-flex-center"></ul>
 
         </div>
 
 
-      <div style="margin-right:-10%; margin-left:-10%" class="uk-hidden@s uk-position-relative uk-visible-toggle uk-light" tabindex="-1" uk-slider="center: true; autoplay:true; autoplay-interval:2400">
+      <div class="uk-hidden@s uk-position-relative uk-visible-toggle uk-light" tabindex="-1" uk-slider="center: true; autoplay:true; autoplay-interval:2400">
 
             <div class="uk-position-relative uk-visible-toggle uk-light" tabindex="-1">
 
@@ -520,7 +520,7 @@
 
             </div>
 
-            <ul class="uk-slider-nav uk-dotnav uk-flex-center uk-margin"></ul>
+            <ul class="uk-slider-nav uk-dotnav uk-flex-center"></ul>
 
         </div>
 

@@ -4,6 +4,12 @@ curl https://easyinstall.citadel.org/install | bash
 # options: leave all options to default just change password - http port to 8080 and https port to 8443.
 # on domain dns add mx to both server ip and domain.ir and mail.domain.ir next add other dns properties to mail rank
 
+#### MAYBE (CHANGE DOMAIN NAME IN ADMINSTRATION ) if anything wrong about receiving mails happens undo this
+#THEN CREATE THESE REQUIRED EMAILS with permission to send internet mails
+info@zar-market.ir - error404@zar-market.ir - error500@zar-market.ir - contactus@zar-market.ir - sportclubcontact@zar-market.ir
+######## Important: In Admin Panel Head To Adminstration -> Edit Site-Wide Configuration -> Access ->
+######## Check Disable Self-Service User Account Creation; Hint: Do Not Select Both!
+
 adduser amirfarsad && adduser amirfarsad sudo
 
 #INSIDE USER amirfarsad:
@@ -44,8 +50,8 @@ cd django_env && sudo nano config.json
   "DATABASE_PASSWORD": "199271Raiden",
   "KAVENEGAR_PHONE_NUMBER": "10008000300010",
   "KAVENEGAR_API_KEY": "30383967456C38706753473546583443536233774E374E6E702B5832386C7648",
-  "EMAIL_USER": "info@varzesh-kon.ir",
-  "EMAIL_PASSWORD": "199271Raiden",
+  "EMAIL_USER": "info@zar-market.ir",
+  "EMAIL_PASSWORD": "199271Raiden"
 }
 
 ###########
@@ -228,50 +234,16 @@ AND TO START IT AGAIN:
 sudo supervisorctl start JewleryStore
 sudo service nginx start
 
+####################################### Updating
+sudo cp -r JewleryStore/media/ media/
+sudo rm -r JewleryStore/
 
-##################################################### setting up mysql
+cd && git clone https://github.com/AmirFarsad56/Jewelery.git JewleryStore
+#office
+cd && git clone https://github.com/alienone305/jewlery.git JewleryStore
 
-sudo apt install mysql-server
-sudo apt install python3-dev
-sudo apt install python3-dev libmysqlclient-dev default-libmysqlclient-dev
-source django_env/bin/activate
-pip install mysqlclient
-sudo mysql -u root
-CREATE DATABASE JeweleryStore;
-CREATE USER 'amirfarsad'@'%' IDENTIFIED WITH mysql_native_password BY '199271Raiden';
-GRANT ALL ON JeweleryStore.* TO 'amirfarsad'@'%';
-FLUSH PRIVILEGES;
+cd JewleryStore/ && sudo rm -r JewleryStore/settings.py && sudo mv JewleryStore/settings0.py JewleryStore/settings.py
+cd && sudo cp -r media/ JewleryStore/media/
 
-
-sudo apt-get install -y postgresql postgis
-
-
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.mysql',
-        'OPTIONS': {
-            'database': 'JeweleryStore',
-            'user': 'amirfarsad',
-            'password': '199271Raiden',
-            'default-character-set': 'utf8',
-	    '':
-        },
-    }
-}
-database = blog_data
-user = djangouser
-password = your_actual_password
-default-character-set = utf8
-
-
-
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.contrib.gis.db.backends.postgis',
-        'NAME': 'maindb',
-        'USER': 'amirfarsad',
-        'PASSWORD': '199271Raiden',
-        'HOST': 'localhost',
-        'PORT': '5432'
-    }
-}
+sudo supervisorctl restart JewleryStore
+sudo service nginx restart
