@@ -1,4 +1,5 @@
-#FIRST CREATE A USER WITH SUDO GROUP
+#CREATE A USER WITH SUDO GROUP
+adduser amirfarsad && adduser amirfarsad sudo
 sudo apt-get update && sudo apt-get upgrade -y
 curl https://easyinstall.citadel.org/install | bash
 # options: leave all options to default just change password - http port to 8080 and https port to 8443.
@@ -6,11 +7,11 @@ curl https://easyinstall.citadel.org/install | bash
 
 #### MAYBE (CHANGE DOMAIN NAME IN ADMINSTRATION ) if anything wrong about receiving mails happens undo this
 #THEN CREATE THESE REQUIRED EMAILS with permission to send internet mails
-info@zar-market.ir - error404@zar-market.ir - error500@zar-market.ir - contactus@zar-market.ir - sportclubcontact@zar-market.ir
+info@tala-market.com - error404@tala-market.com - error500@tala-market.com - contactus@tala-market.com - sportclubcontact@tala-market.com
 ######## Important: In Admin Panel Head To Adminstration -> Edit Site-Wide Configuration -> Access ->
 ######## Check Disable Self-Service User Account Creation; Hint: Do Not Select Both!
 
-adduser amirfarsad && adduser amirfarsad sudo
+
 
 #INSIDE USER amirfarsad:
 
@@ -21,6 +22,7 @@ sudo apt-get install python3.8-venv python3.9-venv
 
 sudo apt-get install -y libgeos-dev binutils libproj-dev gdal-bin libgdal-dev python3-gdal build-essential libpq-dev libssl-dev openssl libffi-dev zlib1g-dev python3-pip
 sudo apt-get install -y git supervisor nginx postgresql postgis
+
 pip install virtualenv
 
 ##ADJUST POSTGRESQL
@@ -41,8 +43,8 @@ cd django_env && sudo nano config.json
 ###########
 
 {
-  "ALLOWED_HOST1": "zar-market.ir",
-  "ALLOWED_HOST2": "www.zar-market.ir",
+  "ALLOWED_HOST1": "tala-market.com",
+  "ALLOWED_HOST2": "www.tala-market.com",
   "SECRET_KEY": "django-insecure-(mh*%shhw=kfc-ykz+v=-b+42^4hg2ayw-p6ygghwe-_i&pa5q",
   "DEBUG":"False",
   "DATABASE_NAME": "maindb",
@@ -50,7 +52,7 @@ cd django_env && sudo nano config.json
   "DATABASE_PASSWORD": "199271Raiden",
   "KAVENEGAR_PHONE_NUMBER": "10008000300010",
   "KAVENEGAR_API_KEY": "30383967456C38706753473546583443536233774E374E6E702B5832386C7648",
-  "EMAIL_USER": "info@zar-market.ir",
+  "EMAIL_USER": "info@tala-market.com",
   "EMAIL_PASSWORD": "199271Raiden"
 }
 
@@ -154,7 +156,7 @@ upstream JewleryStore_server {
 server {
 
     listen   80;
-    server_name  185.88.177.114 zar-market.ir www.zar-market.ir;
+    server_name  185.88.177.114 tala-market.com www.tala-market.com;
 
     client_max_body_size 4G;
     access_log /home/amirfarsad/logs/nginx-access.log;
@@ -221,7 +223,15 @@ sudo ln -s /etc/nginx/sites-available/JewleryStore.conf /etc/nginx/sites-enabled
 
 sudo service nginx start && sudo service nginx restart
 
+############## applying ssl certificate: (documentation on https://certbot.eff.org/)
+sudo snap install core; sudo snap refresh core
+sudo snap install --classic certbot
+sudo ln -s /snap/bin/certbot /usr/bin/certbot
+sudo certbot --nginx
+sudo certbot certonly --nginx
+sudo certbot renew --dry-run
 
+########################################################## Site reload stop start
 TO RELOAD THE SIDE IF ANY CHANGES HAVE BEEN MADE:
 sudo supervisorctl restart JewleryStore
 sudo service nginx restart
@@ -233,8 +243,8 @@ sudo service nginx stop
 AND TO START IT AGAIN:
 sudo supervisorctl start JewleryStore
 sudo service nginx start
-
-####################################### Updating
+######################################
+####################################################################### Updating
 sudo cp -r JewleryStore/media/ media/
 sudo rm -r JewleryStore/
 
@@ -247,3 +257,4 @@ cd && sudo cp -r media/ JewleryStore/media/
 
 sudo supervisorctl restart JewleryStore
 sudo service nginx restart
+#######################################
