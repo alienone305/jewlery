@@ -117,7 +117,6 @@ def UserConfirmView(request):
                 # hashing password
                 user.set_password(user.password)
                 user.save()
-                print(address,'2')
                 commonuser = CommonUserModel.objects.create(user=user, address=address, is_jewler_request = is_jewler_request)
                 commonuser.save()
                 return HttpResponseRedirect(reverse('accounts:login'))

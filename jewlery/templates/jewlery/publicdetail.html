@@ -16,8 +16,8 @@
 
 <div style="border-radius: 8px;" uk-grid>
   <div class=" uk-width-1-1 uk-block fHarmattan ">
-<div class="uk-card uk-card-hover uk-card-body darkgreyC ">
-<div uk-grid>
+<div class="uk-card uk-card-hover uk-card-body darkgreyC " style="border-radius:5px;" >
+<div style="padding:10px;" uk-grid>
   <div class=" uk-width-2-5@s uk-width-1-1 uk-block fHarmattan ">
     <div style=" border-radius:20px " class="uk-position-relative uk-visible-toggle uk-light " tabindex="-1" uk-slider="center: true">
 
@@ -37,15 +37,15 @@
 
     </div>
   </div>
-<div class="uk-width-3-5@s uk-width-1-1 fHarmattan uk-text-left goldC-text" uk-grid>
-  <div class=" uk-width-1-4 fHarmattan ">
+<div class="uk-width-3-5@s uk-width-1-1 fHarmattan uk-text-right goldC-text" uk-grid>
+  <div class=" uk-width-1-4@s uk-width-1-2 fHarmattan "  style="border-right:solid 5px #c7a046; border-radius:2px;">
 نام
   </div>
-  <div class=" uk-width-1-4 fHarmattan uk-text-right whiteC-text">
+  <div class=" uk-width-1-4@s uk-width-1-2 fHarmattan uk-text-right whiteC-text">
 {{jewlery_detail.name}}
   </div>
-  <div class=" uk-width-1-4 fHarmattan ">دسته بندی</div>
-   <div class=" uk-width-1-4 fHarmattan uk-text-right whiteC-text">
+  <div class=" uk-width-1-4@s uk-width-1-2 fHarmattan "  style="border-right:solid 5px #c7a046; border-radius:2px;">دسته بندی</div>
+   <div class=" uk-width-1-4@s uk-width-1-2 fHarmattan uk-text-right whiteC-text">
   {% if jewlery_detail.is_goldset %}  سرویس طلا{% endif %}
   {% if jewlery_detail.is_pendant %} مدال {% endif %}
   {% if jewlery_detail.is_bracelet %} دستبند {% endif %}
@@ -57,45 +57,45 @@
   {% if jewlery_detail.is_watch %} ساعت {% endif %}
   {% if jewlery_detail.is_anklet %} پابند {% endif %}
    </div>
-  <div class=" uk-width-1-4 fHarmattan ">
+  <div class=" uk-width-1-4@s uk-width-1-2 fHarmattan "  style="border-right:solid 5px #c7a046; border-radius:2px;">
 وزن
   </div>
-  <div class=" uk-width-1-4 fHarmattan uk-text-right whiteC-text">
+  <div class=" uk-width-1-4@s uk-width-1-2 fHarmattan uk-text-right whiteC-text">
 {{jewlery_detail.weight}}g
   </div>
-  <div class=" uk-width-1-4 fHarmattan ">
+  <div class=" uk-width-1-4@s uk-width-1-2 fHarmattan "  style="border-right:solid 5px #c7a046; border-radius:2px;">
 ساخت کشور
   </div>
-  <div class=" uk-width-1-4 fHarmattan uk-text-right whiteC-text">
+  <div class=" uk-width-1-4@s uk-width-1-2 fHarmattan uk-text-right whiteC-text">
 {{jewlery_detail.made_in}}
   </div>
-  <div class=" uk-width-1-4 fHarmattan ">
+  <div class=" uk-width-1-4@s uk-width-1-2 fHarmattan "  style="border-right:solid 5px #c7a046; border-radius:2px;">
 جنس
   </div>
-  <div class=" uk-width-1-4 fHarmattan uk-text-right whiteC-text">
+  <div class=" uk-width-1-4@s uk-width-1-2 fHarmattan uk-text-right whiteC-text">
 {% if jewlery_detail.is_unisex %}زنانه و مردانه{% else %}{% if jewlery_detail.is_womanly %}زنانه{% else %}مردانه{% endif %}{% endif %}
   </div>
 
-    <div class=" uk-width-1-4 fHarmattan ">
+    <div class=" uk-width-1-4@s uk-width-1-2 fHarmattan "  style="border-right:solid 5px #c7a046; border-radius:2px;">
   نام سازنده
     </div>
-    <div class=" uk-width-1-4 fHarmattan uk-text-right whiteC-text">
+    <div class=" uk-width-1-4@s uk-width-1-2 fHarmattan uk-text-right whiteC-text">
   {{jewlery_detail.company_name}}
     </div>
-    <div class=" uk-width-1-4 fHarmattan ">
+    <div class=" uk-width-1-4@s uk-width-1-2 fHarmattan "  style="border-right:solid 5px #c7a046; border-radius:2px;">
 عیار
     </div>
-    <div class=" uk-width-1-4 fHarmattan uk-text-right whiteC-text">
+    <div class=" uk-width-1-4@s uk-width-1-2 fHarmattan uk-text-right whiteC-text">
   {{jewlery_detail.karat}}
     </div>
-    <div class=" uk-width-1-4 fHarmattan ">
+    <div class=" uk-width-1-4@s uk-width-1-2 fHarmattan "  style="border-right:solid 5px #c7a046; border-radius:2px;">
 اجرت
     </div>
-    <div class=" uk-width-1-4 fHarmattan uk-text-right whiteC-text">
+    <div class=" uk-width-1-4@s uk-width-1-2 fHarmattan uk-text-right whiteC-text">
   {{jewlery_detail.sale_wage}}%
     </div>
-    <div class=" uk-width-1-4 fHarmattan ">دسته بندی</div>
-     <div class=" uk-width-1-4 fHarmattan uk-text-right whiteC-text">
+    <div class=" uk-width-1-4@s uk-width-1-2 fHarmattan "  style="border-right:solid 5px #c7a046; border-radius:2px;">دسته بندی</div>
+     <div class=" uk-width-1-4@s uk-width-1-2 fHarmattan uk-text-right whiteC-text">
     {% if jewlery_detail.is_goldset %}  سرویس طلا{% endif %}
     {% if jewlery_detail.is_pendant %} مدال {% endif %}
     {% if jewlery_detail.is_bracelet %} دستبند {% endif %}
@@ -107,18 +107,20 @@
     {% if jewlery_detail.is_watch %} ساعت {% endif %}
     {% if jewlery_detail.is_anklet %} پابند {% endif %}
      </div>
-     <div class=" uk-width-1-2 fHarmattan uk-text-center">
-       {% if not user.commonusers.is_jewler %}          <div style="border:solid 1px #d4af37; border-radius:5px; font-size:18px;direction: ltr;"  class="">
-                {{jewlery_detail.pk|calculateprice}} T
-              </div>{% endif %}
-       {% if user.commonusers.is_jewler %}                <div class=" uk-width-1-2 fHarmattan ">اجرت فروش عمده</div>  <div class=" uk-width-1-2 fHarmattan whiteC-text">{{jewlery_detail.sale_wage}}</div>{% endif %}
 
-
-
-     </div>
 
 
   </div>
+  </div>
+  <br>
+  <div class=" uk-width-1-1 fHarmattan uk-text-center goldC-text" ">
+    {% if not user.commonusers.is_jewler %}          <div style="border:solid 1px #d4af37; border-radius:5px; font-size:23px;direction: ltr;"  class="">
+             {{jewlery_detail.pk|calculateprice}} T
+           </div>{% endif %}
+    {% if user.commonusers.is_jewler %}                <div class=" uk-width-1-2 fHarmattan "  style="border-right:solid 5px #c7a046; border-radius:2px;">اجرت فروش عمده</div>  <div class=" uk-width-1-2 fHarmattan whiteC-text">{{jewlery_detail.sale_wage}}</div>{% endif %}
+
+
+
   </div>
   <a href="{% url 'order:ordering' jewlery_detail.pk %}" class="uk-align-center uk-text-center uk-button goldC uk-margin-small-bottom darkgreyC-text fHarmattan uk-text-large">سفارش</a>
 
