@@ -56,7 +56,7 @@ def CommonUserSignupView(request):
                  params = {
                  'sender': settings.KAVENEGAR_PHONE_NUMBER,
                  'receptor': phone_number,
-                 'message' : 'سایت زر مارکت \n' +'کد فعالسازی شما' +  ' :' + code
+                 'message' : 'سایت طلا مارکت \n' +'کد فعالسازی شما' +  ' :' + code
                  }
                  try:
                      response = api.sms_send(params)

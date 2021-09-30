@@ -45,7 +45,6 @@ def PasswordChangeView(request,slug):
                 if password_form.cleaned_data.get('new_password') == password_form.cleaned_data.get('confirm_password'):
                     new_password = password_form.cleaned_data.get('new_password')
                     try:
-                        validate_password(new_password,user=user, password_validators=None)
                         user.set_password(new_password)
                         user.save()
                         return HttpResponseRedirect(reverse('accounts:login'))
@@ -94,7 +93,7 @@ def ForgotPasswordView(request):
                 try :
                     user = get_object_or_404(UserModel,username = phone_number)
                     if user :
-                        var = 'abcdefghijklmnpqrstuvwxyzABCDEFIJKLMNPQRSTUVWXYZ123456789'
+                        var = 'abcdefghijkmnpqrstuvwxyzABCDEFJKLMNPQRSTUVWXYZ123456789'
                         new_password=''
                         for i in range(0,random.randrange(7,8,1)):
                             c = random.choice(var)
@@ -104,7 +103,7 @@ def ForgotPasswordView(request):
                         params = {
                         'sender': settings.KAVENEGAR_PHONE_NUMBER,
                         'receptor': number,
-                        'message' : 'سایت زر مارکت\n' + str(user.username) + ' :'+'نام کاربری شما'+'\n'+ new_password +' :'+ 'رمز عبور جدید شما '
+                        'message' : 'سایت طلا مارکت\n' + str(user.username) + ' :'+'نام کاربری شما'+'\n'+ new_password +' :'+ 'رمز عبور جدید شما '
                         }
                         response = api.sms_send(params)
                         phone_number_exists = True
