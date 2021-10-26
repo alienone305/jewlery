@@ -6,12 +6,13 @@
     {% endblock %}
     {% load static %}
     <!DOCTYPE html>
+
     <html lang="en" dir="ltr" style="overflow-x: hidden;">
       <head>
         <meta charset="utf-8">
         <title></title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="shortcut icon" type="image/png" href="/media/Logo/logo.png"/>
+    <link rel="shortcut icon" type="image/png" href="/media/Logo/transparent.png"/>
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Lateef&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Lalezar&display=swap" rel="stylesheet">
@@ -28,7 +29,7 @@
 
 
 
-                <div class="uk-navbar-right">
+                <div class="uk-navbar-right uk-visible@s">
 <a href="#" class="uk-navbar-toggle uk-hidden@s goldC-text" uk-navbar-toggle-icon uk-toggle="target: #sidenav"></a>
                     <ul class="uk-navbar-nav uk-navbar-nav uk-visible@s">
 
@@ -56,6 +57,7 @@
                     </li>
 
                     {% endif %}
+                    <li><a style="color:#c7a046; font-family: 'Harmattan', sans-serif; font-size:20px;"   href="https://tala-market.com/blog/">وبلاگ</a></li>
                     <li>
                       <a style="color:#c7a046; font-family: 'Harmattan', sans-serif; font-size:20px;"   href="#">طلا مارکت</a>
                         <div class="uk-navbar-dropdown darkgreyC">
@@ -70,7 +72,8 @@
                     </ul>
 
                 </div>
-                <div class="uk-navbar-left">
+
+                <div class="uk-navbar-left uk-visible@s">
 
                     <ul class="uk-navbar-nav">
                         <li>
@@ -79,6 +82,62 @@
                     </ul>
 
                 </div>
+
+
+              <div class="uk-navbar-right uk-hidden@s">
+
+                  <ul class="uk-navbar-nav">
+                      <li>
+                        <a  class="uk-navbar-item uk-logo" href="{% url 'home' %}"><img style="margin:5px;" src="/media/Logo/logo.png" width="80" alt=""></a>
+                      </li>
+                  </ul>
+
+              </div>
+
+                <div class="uk-navbar-left uk-hidden@s">
+<a href="#" class="uk-navbar-toggle uk-hidden@s goldC-text" uk-navbar-toggle-icon uk-toggle="target: #sidenav"></a>
+                    <ul class="uk-navbar-nav uk-navbar-nav uk-visible@s">
+
+                      {% if user.is_authenticated %}
+                      <li><a style="color:#c7a046; font-family: 'Harmattan', sans-serif; font-size:20px;"  href="{% url 'logout' %}">خروج</a></li>
+                      {% else %}
+                        <li><a style="color:#c7a046; font-family: 'Harmattan', sans-serif; font-size:20px;"   href="{% url 'accounts:login' %}">ورود</a></li>
+                        <li><a style="color:#c7a046; font-family: 'Harmattan', sans-serif; font-size:20px;"   href="{% url 'commonuser:signup' %}">عضویت</a></li>
+                        {% endif %}
+                    <li><a style="color:#c7a046; font-family: 'Harmattan', sans-serif; font-size:20px;"   href="{% url 'jewlery:publiclist' %}">محصولات</a></li>
+                    {% if user.is_authenticated and user.is_superuser %}
+                      <li><a style="color:#c7a046; font-family: 'Harmattan', sans-serif; font-size:20px;"    href="{% url 'accounts:dashboard' user.slug %}">داشبورد</a></li>
+                    {% endif %}
+                    {% if user.is_authenticated and user.is_masteruser %}
+                      <li><a style="color:#c7a046; font-family: 'Harmattan', sans-serif; font-size:20px;"   href="{% url 'masteruser:dashboard' user.slug %}">داشبورد</a></li>
+                    {% endif %}
+                    {% if user.is_authenticated and user.is_commonuser %}
+                    <li>
+                      <a style="color:#c7a046; font-family: 'Harmattan', sans-serif; font-size:20px;"   href="#">ناحیه کاربری</a>
+                        <div class="uk-navbar-dropdown darkgreyC">
+                            <ul class="uk-nav uk-navbar-dropdown-nav">
+                                <li class="uk-active"><a style="color:#c7a046; font-family: 'Harmattan', sans-serif; font-size:20px;"   href="{% url 'commonuser:profile' user.slug %}">پروفایل</a></li>
+                                <li class="uk-active"><a style="color:#c7a046; font-family: 'Harmattan', sans-serif; font-size:20px;"   href="{% url 'order:listforuser' user.slug %}">سفارشات</a></li>                              </ul>
+                        </div>
+                    </li>
+
+                    {% endif %}
+                    <li><a style="color:#c7a046; font-family: 'Harmattan', sans-serif; font-size:20px;"   href="https://tala-market.com/blog/">وبلاگ</a></li>
+                    <li>
+                      <a style="color:#c7a046; font-family: 'Harmattan', sans-serif; font-size:20px;"   href="#">طلا مارکت</a>
+                        <div class="uk-navbar-dropdown darkgreyC">
+                            <ul class="uk-nav uk-navbar-dropdown-nav">
+                                <li class="uk-active"><a style="color:#c7a046; font-family: 'Harmattan', sans-serif; font-size:20px;"   href="{% url 'company:aboutus' %}">درباره ما</a></li>
+                                <li class="uk-active"><a style="color:#c7a046; font-family: 'Harmattan', sans-serif; font-size:20px;"   href="{% url 'company:contactus' %}">تماس با ما</a></li>
+                                <li class="uk-active"><a style="color:#c7a046; font-family: 'Harmattan', sans-serif; font-size:20px;"   href="{% url 'company:faqs' %}">سوالات متداول</a></li>
+                                <li class="uk-active"><a style="color:#c7a046; font-family: 'Harmattan', sans-serif; font-size:20px;"   href="{% url 'company:termsandconditions' %}">قوانین</a></li>
+                              </ul>
+                      </div>
+                    </li>
+                    </ul>
+
+                </div>
+
             </nav>
         </header>
 
@@ -106,6 +165,7 @@
                         </li>
 
                         {% endif %}
+                        <li><a style="color:#c7a046; font-family: 'Harmattan', sans-serif; font-size:20px;"   href="https://tala-market.com/blog/">وبلاگ</a></li>
                         <li>
                           <li class="uk-active"><a style="color:#c7a046; font-family: 'Harmattan', sans-serif; font-size:20px;"   href="{% url 'company:aboutus' %}">درباره ما</a></li>
                           <li class="uk-active"><a style="color:#c7a046; font-family: 'Harmattan', sans-serif; font-size:20px;"   href="{% url 'company:contactus' %}">تماس با ما</a></li>
@@ -122,18 +182,18 @@
 <footer class="darkgreyC" style="padding:50px;">
 <div  class="uk-grid uk-grid-small uk-child-width-1-3 fHarmattan" uk-grid>
   <div class="uk-text-">
-<a href="#" class="goldC-text">درباره ما</a><br>
-<a href="#" class="goldC-text">تماس با ما</a><br>
-<a href="#" class="goldC-text">وبلاگ</a><br>
-<a href="#" class="goldC-text">سوالات متداول</a><br>
+<a href="{% url 'company:aboutus' %}" class="goldC-text">درباره ما</a><br>
+<a href="{% url 'company:contactus' %}" class="goldC-text">تماس با ما</a><br>
+<a href="{% url 'company:faqs' %}" class="goldC-text">سوالات متداول</a><br>
+<a href="https://tala-market.com/blog/" class="goldC-text">وبلاگ</a><br>
   </div>
-  <div class="uk-text-=">
-    <a href="#" class="goldC-text">لیست طلا و جواهرات</a><br>
-    <a href="#" class="goldC-text">عضویت</a><br>
+  <div class="">
+    <a href="{% url 'jewlery:publiclist' %}" class="goldC-text">لیست طلا و جواهرات</a><br>
+    <a href="{% url 'commonuser:signup' %}" class="goldC-text">عضویت</a><br>
   {% if user.is_authenticated %}
-    <a href="#" class="goldC-text">خروج</a><br>
+    <a href="{% url 'logout' %}" class="goldC-text">خروج</a><br>
   {% else %}
-    <a href="#" class="goldC-text">ورود</a><br>
+    <a href="{% url 'accounts:login' %}" class="goldC-text">ورود</a><br>
     {% endif %}
   </div>
   <div class="uk-text-center">

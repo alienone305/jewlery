@@ -17,8 +17,8 @@ info@tala-market.com - error404@tala-market.com - error500@tala-market.com - con
 
 sudo apt-get update && sudo apt-get upgrade -y && sudo apt-get install -y software-properties-common
 sudo add-apt-repository ppa:deadsnakes/ppa
-sudo apt install python3.9
-sudo apt-get install python3.8-venv python3.9-venv
+sudo apt install python3.9 -y
+sudo apt-get install python3.8-venv python3.9-venv -y
 
 sudo apt-get install -y libgeos-dev binutils libproj-dev gdal-bin libgdal-dev python3-gdal build-essential libpq-dev libssl-dev openssl libffi-dev zlib1g-dev python3-pip
 sudo apt-get install -y git supervisor nginx postgresql postgis
@@ -64,9 +64,10 @@ cd && git clone https://github.com/alienone305/jewlery.git JewleryStore
 
 #THEN INSIDE THERE:
 
-cd JewleryStore && pip install -r requirements.txt && pip install django[argon2] && python manage.py collectstatic && python manage.py makemigrations && python manage.py migrate
-
+cd JewleryStore && pip install -r requirements.txt && pip install django[argon2] && pip install django-dbbackup
 pip install gunicorn psycopg2-binary
+python manage.py makemigrations && python manage.py migrate && python manage.py collectstatic
+
 
 #CHECK IF IT IS RUNNING CORRECTLY IN Main_Project
 gunicorn JewleryStore.wsgi:application --bind 0.0.0.0:8001
@@ -113,6 +114,9 @@ exec gunicorn ${DJANGO_WSGI_MODULE}:application \
   --log-file=-
 
 #########################################################
+
+cd JewleryStore/ && sudo rm -r JewleryStore/settings.py && sudo mv JewleryStore/settings0.py JewleryStore/settings.py
+python manage.py createsuperuser
 
 sudo chmod u+x gunicorn_start.bash
 
@@ -215,6 +219,23 @@ server {
         root /home/amirfarsad/JewleryStore/templates/nginx_error_pages/;
         internal;
         }
+    location /blog {
+       alias /var/www/tala-market.com;
+       try_files $uri $uri/ @blog;
+       index index.php index.html index.htm index.nginx-debian.html;
+
+       location ~ \.php$ {
+         try_files $uri =404;
+         fastcgi_pass 127.0.0.1:9000;
+         fastcgi_index index.php;
+         fastcgi_param SCRIPT_FILENAME $request_filename;
+         include fastcgi_params;
+       }
+    }
+    location @blog {
+      rewrite /blog/(.*)$ /blog/index.php?/$1 last;
+    }
+
 }
 
 ########################################################################
@@ -244,17 +265,58 @@ AND TO START IT AGAIN:
 sudo supervisorctl start JewleryStore
 sudo service nginx start
 ######################################
-####################################################################### Updating
-sudo cp -r JewleryStore/media/ media/
-sudo rm -r JewleryStore/
 
+#######################################
+
+sudo apt update
+sudo add-apt-repository ppa:ondrej/php
+sudo apt install nginx mariadb-server mariadb-client php7.3-fpm php7.3-mysql
+sudo nano /etc/php/7.3/fpm/pool.d/www.conf
+############# Then make these changes there: #### ctrl+w can be used for searching #######
+
+listen = /run/php/php7.3-fpm.sock ==> ;listen = /run/php/php7.3-fpm.sock
+;##ADD THIS ==>
+listen = 127.0.0.1:9000
+
+##############################################################################
+
+sudo mysql_secure_installation
+# yes no no no yes
+sudo mysql
+
+CREATE DATABASE wordpress_db;
+CREATE USER 'amirfarsad'@'localhost' IDENTIFIED BY '199271Raiden';
+GRANT ALL PRIVILEGES ON wordpress_db.* to amirfarsad@'localhost';
+FLUSH PRIVILEGES;
+exit
+
+
+sudo git clone https://github.com/alienone306/wp.git /var/www/tala-market.com
+sudo rm -r /var/www/tala-market.com/wp-config.php
+############### or
+wget http://wordpress.org/latest.tar.gz && tar xzf latest.tar.gz
+sudo mv wordpress /var/www/tala-market.com
+
+sudo chmod -R 755 /var/www/tala-market.com && sudo chown www-data:www-data /var/www/tala-market.com/ -R
+
+sudo service nginx start && sudo service nginx restart && sudo service php7.3-fpm restart
+
+
+-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/ Updating
+
+cd && source django_env/bin/activate && cd JewleryStore
+python manage.py mediabackup
+python manage.py dbbackup
+
+cd && sudo rm -r JewleryStore
 cd && git clone https://github.com/AmirFarsad56/Jewelery.git JewleryStore
 #office
 cd && git clone https://github.com/alienone305/jewlery.git JewleryStore
 
 cd JewleryStore/ && sudo rm -r JewleryStore/settings.py && sudo mv JewleryStore/settings0.py JewleryStore/settings.py
-cd && sudo cp -r media/ JewleryStore/media/
+
+python manage.py mediarestore
+python manage.py dbrestore
 
 sudo supervisorctl restart JewleryStore
 sudo service nginx restart
-#######################################

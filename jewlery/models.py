@@ -21,6 +21,8 @@ class JewleryModel(models.Model):
     instance_price = models.IntegerField(null = True, blank = True)
     is_favorite =  models.BooleanField(default = False, blank = False, null = False)
 
+    description = models.TextField(null = True, blank = True)
+
     #types
     is_goldset =  models.BooleanField(default = False, blank = False, null = False)
     is_pendant =  models.BooleanField(default = False, blank = False, null = False)

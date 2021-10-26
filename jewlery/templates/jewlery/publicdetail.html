@@ -18,13 +18,13 @@
   <div class=" uk-width-1-1 uk-block fHarmattan ">
 <div class="uk-card uk-card-hover uk-card-body darkgreyC " style="border-radius:5px;" >
 <div style="padding:10px;" uk-grid>
-  <div class=" uk-width-2-5@s uk-width-1-1 uk-block fHarmattan ">
-    <div style=" border-radius:20px " class="uk-position-relative uk-visible-toggle uk-light " tabindex="-1" uk-slider="center: true">
+  <div style="padding:7px;" class=" uk-width-2-5@s uk-width-1-1 uk-block fHarmattan ">
+    <div style=" border-radius:10px; " class="uk-position-relative uk-visible-toggle uk-light " tabindex="-1" uk-slider="center: true">
 
         <ul  class="uk-slider-items uk-grid" uk-lightbox="animation: slide">
           {% for pic in jewlery_detail.pictures.all %}
             <li class="uk-width-3-4 ">
-                <a class="uk-panel uk-inline" href="{{pic.picture.url}}" >
+                <a class="uk-panel uk-inline"  href="{{pic.picture.url}}" >
                     <img width="2000" height="2000" src="{{pic.picture.url}}" alt="">
 
                 </a>
@@ -38,12 +38,6 @@
     </div>
   </div>
 <div class="uk-width-3-5@s uk-width-1-1 fHarmattan uk-text-right goldC-text" uk-grid>
-  <div class=" uk-width-1-4@s uk-width-1-2 fHarmattan "  style="border-right:solid 5px #c7a046; border-radius:2px;">
-نام
-  </div>
-  <div class=" uk-width-1-4@s uk-width-1-2 fHarmattan uk-text-right whiteC-text">
-{{jewlery_detail.name}}
-  </div>
   <div class=" uk-width-1-4@s uk-width-1-2 fHarmattan "  style="border-right:solid 5px #c7a046; border-radius:2px;">دسته بندی</div>
    <div class=" uk-width-1-4@s uk-width-1-2 fHarmattan uk-text-right whiteC-text">
   {% if jewlery_detail.is_goldset %}  سرویس طلا{% endif %}
@@ -57,6 +51,13 @@
   {% if jewlery_detail.is_watch %} ساعت {% endif %}
   {% if jewlery_detail.is_anklet %} پابند {% endif %}
    </div>
+  <div class=" uk-width-1-4@s uk-width-1-2 fHarmattan "  style="border-right:solid 5px #c7a046; border-radius:2px;">
+نام
+  </div>
+  <div class=" uk-width-1-4@s uk-width-1-2 fHarmattan uk-text-right whiteC-text">
+{{jewlery_detail.name}}
+  </div>
+
   <div class=" uk-width-1-4@s uk-width-1-2 fHarmattan "  style="border-right:solid 5px #c7a046; border-radius:2px;">
 وزن
   </div>
@@ -127,9 +128,25 @@
 
 </div>
 <br><br>
+
+
 </div>
+</div></div>
+<div class="darkgreyC" style="padding:45px;">
+<h1 style="font-size:25px;" class="uk-width-1-1 goldC-text fHarmattan uk-text-right">
+  توضیحات {{jewlery_detail.name}}
+</h1>
+  <p>
+    <div style="padding:15px;" class="uk-width-1-1 milkywhiteC-text fHarmattan uk-text-right uk-text-justify">
+{{jewlery_detail.description|linebreaks}}
+
 </div>
+
+  </p>
+
 </div>
+<br>
+
 <div  class="uk-text-center ">
 
 <div style="margin-right:20px;" class="uk-text-right goldC-text fHarmattan">

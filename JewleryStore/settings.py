@@ -53,6 +53,7 @@ INSTALLED_APPS = [
     'commonuser',
     'masteruser',
     'jewlery',
+    'dbbackup',
     'order',
     'company',
 ]
@@ -163,3 +164,6 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 KAVENEGAR_API_KEY = '30383967456C38706753473546583443536233774E374E6E702B5832386C7648'
 KAVENEGAR_PHONE_NUMBER = '10008000300010'
+
+DBBACKUP_STORAGE = 'django.core.files.storage.FileSystemStorage'
+DBBACKUP_STORAGE_OPTIONS = {'location': '/home/amirfarsad/backup/'}

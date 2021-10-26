@@ -1,33 +1,151 @@
-<!DOCTYPE html>
-<html lang="en" dir="ltr">
-  <head>
-    <meta charset="utf-8">
-    <meta name=”robots” content=”noindex,follow”>
-    <title>
-ویرایش طلا | طلا مارکت
-    </title>
-  </head>
-  <body>
+{% extends "BaseTemplates/base1.html" %}
+
+{% block head_block %}
+<meta name=”robots” content=”noindex,follow”>
+<title>
+ایجاد محصول | طلا مارکت
+</title>
+{% endblock %}
+{% block body_block %}
+<br>
+<div class="uk-grid-match uk-grid-small uk-text-center " uk-grid>
+  <div class="uk-width-1-6 uk-width-1-4@m">
+
+  </div>
+      <div class="uk-width-2-3 uk-width-1-2@m uk-block ">
+<div class="uk-card uk-card-hover uk-card-body darkgreyC ">
+    <h3 style="font-size:30px;" class="goldC-text uk-card-title uk-align-center fHarmattan">ایجاد محصول</h3>
     <form enctype="multipart/form-data" method="POST">
       {% csrf_token %}
-      {{form.as_p}}
-      <div class="row gold-text center fMarkazi">
-  با کلیک بر روی هر یک از عکس ها میتوانید آن را تغییر دهید
+      <div class="uk-grid-match uk-grid-small uk-text-center" uk-grid>
+
+      <div class="uk-width-1-2@m">
+      {{form.name}}
+      </div>
+      <div class="uk-width-1-2@m">
+      {{form.made_in}}
+      </div>
+      <div class="uk-width-1-2@m">
+      {{form.company_name}}
+      </div>
+      <div class="uk-width-1-2@m">
+      {{form.karat}}
+      </div>
+      <div class="uk-width-1-2@m">
+      {{form.weight}}
+      </div>
+      <div class="uk-width-1-2@m">
+      {{form.buy_wage}}
+      </div>
+      <div class="uk-width-1-2@m">
+      {{form.sale_wage}}
+      </div>
+      <div class="uk-width-1-2@m">
+      {{form.wholesale_wage}}
+      </div>
+
+
+<div class="uk-width-1-2@m">
+<label style="padding-top:8px; white-space:pre" class="uk-text-right fHarmattan goldC-text">{{form.is_womanly}}   زنانه  </label>
+</div>
+<div class="uk-width-1-2@m">
+<label style="padding-top:8px; white-space:pre" class="uk-text-right fHarmattan goldC-text">{{form.is_unisex}}    زنانه و مردانه  </label>
+</div>
+<div class="uk-width-1-2@m">
+<label style="padding-top:8px; white-space:pre" class="uk-text-right fHarmattan goldC-text">{{form.is_used}}    طلای کهنه </label>
+</div>
+<div class="uk-width-1-2@m">
+<label style="padding-top:8px; white-space:pre" class="uk-text-right fHarmattan goldC-text">{{form.is_domestic}}    ساخت داخل </label>
+</div>
+<div class="uk-width-1-2@m">
+<label style="padding-top:8px; white-space:pre" class="uk-text-right fHarmattan goldC-text">{{form.is_available}}    موجود </label>
+</div>
+<div class="uk-width-1-2@m">
+<label style="padding-top:8px; white-space:pre" class="uk-text-right fHarmattan goldC-text">{{form.is_favorite}}   پیشنهادی  </label>
 </div>
 
-        {% for picture in jewlery.pictures.all %}
-        <div class="center col s12 m6 l6">
-        <a href="{% url 'jewlery:pictureupdate' pk=picture.pk %}"><img src="{{picture.picture.url}}" height="90" width="150"></a>
-        </div>
-        {% endfor %}
 
-        <a href="{% url 'jewlery:pictureadd' pk=jewlery.pk %}"  class=" tooltipped" data-position="bottom" data-tooltip="اضافه کردن عکس ‍‍" ><i style="color:#d4af37;" class="material-icons large">add_a_photo</i></a>
+<div style="border-top:2px grey solid" class="uk-width-1-1@m">
 
-<br><br>
-            {% if form.errors %}
-            <p class="fMarkazi white-text">مشکلی پیش آمد. لطفا فرم را دوباره و با دقت پر کنید</p>
-            {% endif %}
-                  <input type="submit" name="" value="submit">
+</div>
+
+<div class="uk-width-1-2@m">
+<label style="padding-top:8px; white-space:pre" class="uk-text-right fHarmattan goldC-text">{{form.is_goldset}}    سرویس طلا  </label>
+</div>
+<div class="uk-width-1-2@m">
+<label style="padding-top:8px; white-space:pre" class="uk-text-right fHarmattan goldC-text">{{form.is_pendant}}    مدال </label>
+</div>
+<div class="uk-width-1-2@m">
+<label style="padding-top:8px; white-space:pre" class="uk-text-right fHarmattan goldC-text">{{form.is_bracelet}}    دستبند </label>
+</div>
+<div class="uk-width-1-2@m">
+<label style="padding-top:8px; white-space:pre" class="uk-text-right fHarmattan goldC-text">{{form.is_necklace}}    گردنبند </label>
+</div>
+<div class="uk-width-1-2@m">
+<label style="padding-top:8px; white-space:pre" class="uk-text-right fHarmattan goldC-text">{{form.is_bangle}}    النگو  </label>
+</div>
+<div class="uk-width-1-2@m">
+<label style="padding-top:8px; white-space:pre" class="uk-text-right fHarmattan goldC-text">{{form.is_chain}}    زنجیر </label>
+</div>
+<div class="uk-width-1-2@m">
+<label style="padding-top:8px; white-space:pre" class="uk-text-right fHarmattan goldC-text">{{form.is_earings}}    گوشواره  </label>
+</div>
+<div class="uk-width-1-2@m">
+<label style="padding-top:8px; white-space:pre" class="uk-text-right fHarmattan goldC-text">{{form.is_halfset}}    نیم ست  </label>
+</div>
+<div class="uk-width-1-2@m">
+<label style="padding-top:8px; white-space:pre" class="uk-text-right fHarmattan goldC-text">{{form.is_watch}}    ساعت  </label>
+</div>
+<div class="uk-width-1-2@m">
+<label style="padding-top:8px; white-space:pre" class="uk-text-right fHarmattan goldC-text">{{form.is_anklet}}    پابند  </label>
+</div>
+
+<div style="border-top:2px grey solid" class="uk-width-1-1@m">
+
+</div>
+<div class="uk-width-1-2@m">
+<label style="padding-top:8px; white-space:pre" class="uk-text-right fHarmattan goldC-text disabled" >{{form.is_confirmed}}    تایید شده </label>
+</div>
+<div style="border-top:2px grey solid" class="uk-width-1-1@m">
+
+</div>
+<div class="uk-width-1-1@m">
+{{form.description}}
+</div>
+<div style="border-top:2px grey solid" class="uk-width-1-1@m">
+
+</div>
+
+<div class="goldC-text center fHarmattan uk-width-1-1">
+با کلیک بر روی هر یک از عکس ها میتوانید آن را تغییر دهید
+</div>
+<br>
+  {% for picture in jewlery.pictures.all %}
+  <div class="uk-child-width-1-3@m uk-child-width-1-2@s uk-child-width-1-1">
+  <a href="{% url 'jewlery:pictureupdate' pk=picture.pk %}"><img src="{{picture.picture.url}}" height="90" width="150"></a>
+  </div>
+  {% endfor %}
+
+  <a href="{% url 'jewlery:pictureadd' pk=jewlery.pk %}"  class=" fHarmattan goldC-text" data-position="bottom" data-tooltip="اضافه کردن عکس ‍‍" ><i style="color:#d4af37;" class="material-icons large">افزودن عکس</i></a>
+
+
+              {% if form.errors %}
+                  <div class="uk-width-1-1">
+              <p  class="fHarmattan goldC-text">مشکلی پیش آمد. لطفا دوباره سعی کنید</p>
+              </div>
+              {% endif %}
+
+      </div>
+      <br>
+      <button style="margin-top:20px;" class="uk-button uk-button-primary fHarmattan goldC darkgreyC-text" type="submit">تایید
+    </button><br><br>
     </form>
-  </body>
-</html>
+</div>
+<div class="uk-width-1-6 uk-width-1-4@m">
+
+</div>
+</div>
+</div>
+<br><br><br>
+
+{% endblock %}

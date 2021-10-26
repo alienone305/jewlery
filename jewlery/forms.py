@@ -9,7 +9,7 @@ class JewleryForm(forms.ModelForm):
     class Meta:
         model = JewleryModel
         fields = ('name','made_in','company_name','karat','weight','buy_wage','sale_wage','wholesale_wage','is_womanly','is_unisex',
-        'is_used','is_domestic','is_available','is_confirmed','is_favorite',
+        'is_used','is_domestic','is_available','is_confirmed','is_favorite','description',
         'is_goldset','is_pendant','is_bracelet','is_necklace','is_bangle','is_chain','is_earings','is_halfset','is_watch','is_anklet')
         widgets = {
             'name': forms.TextInput(attrs={'style':'color:#c7a046;background-color:#212121;','class':'uk-input fHarmattan','placeholder':'نام  محصول'},),
@@ -40,6 +40,7 @@ class JewleryForm(forms.ModelForm):
             'is_watch': forms.CheckboxInput(attrs={'style':'color:#c7a046;background-color:#212121;','class': 'uk-checkbox'}),
             'is_anklet': forms.CheckboxInput(attrs={'style':'color:#c7a046;background-color:#212121;','class': 'uk-checkbox'}),
 
+            'description': forms.Textarea(attrs={'style':'color:#c7a046;background-color:#212121;','class':'uk-textarea fHarmattan','rows':'5','required':'false','placeholder':'توضیحات'},),
         }
 
 
