@@ -303,7 +303,7 @@ sudo service nginx start && sudo service nginx restart && sudo service php7.3-fp
 
 
 -/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/ Updating
-
+sudo cp -r JewleryStore/media media/
 cd && source django_env/bin/activate && cd JewleryStore
 python manage.py mediabackup
 python manage.py dbbackup
@@ -312,7 +312,7 @@ cd && sudo rm -r JewleryStore
 cd && git clone https://github.com/AmirFarsad56/Jewelery.git JewleryStore
 #office
 cd && git clone https://github.com/alienone305/jewlery.git JewleryStore
-
+sudo rm -r JewleryStore/media && cp -r media/ JewleryStore/media
 cd JewleryStore/ && sudo rm -r JewleryStore/settings.py && sudo mv JewleryStore/settings0.py JewleryStore/settings.py
 
 python manage.py mediarestore
